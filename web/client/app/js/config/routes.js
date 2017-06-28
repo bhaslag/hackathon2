@@ -9,7 +9,7 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService) {
     publicRoute: true,
     resolve: {
       songs: function (SongsService) {
-        return SongsService.query();
+        return SongsService.get();
       }
     }
   }, {
