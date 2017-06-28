@@ -13,16 +13,25 @@
 
 <body ng-app="DukeBox">
 
-  <header></header>
-  <ui-view></ui-view>
+  <main></main>
 
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
   <script src="./node_modules/angular/angular.js"></script>
+  <script src="./node_modules/angular-local-storage/dist/angular-local-storage.js"></script>
+  <script src="./node_modules/materialize-css/dist/js/materialize.js"></script>
+  <script src="./node_modules/angular-messages/angular-messages.js"></script>
   <script src="./node_modules/angular-resource/angular-resource.min.js"></script>
   <script src="./node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="./app/app.js"></script>
-  <script src="./app/config/routes.js"></script>
-  <script src="./app/components/home/home.js"></script>
-  <script src="./app/components/header/header.js"></script>
+  <script src="./app/js/config/routes.js"></script>
+  <script src="./app/js/services/auth.js"></script>
+  <script src="./app/js/services/songs.js"></script>
+  <script src="./app/js/components/main/main.js"></script>
+  <script src="./app/js/components/home/home.js"></script>
+  <script src="./app/js/components/sidebar/sidebar.js"></script>
+  <script src="./app/js/components/login/login.js"></script>
+  <script src="./app/js/components/login/signin.js"></script>
+  <script src="./app/js/components/login/signup.js"></script>
 </body>
 
 </html>
