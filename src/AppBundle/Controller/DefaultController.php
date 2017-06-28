@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -17,7 +18,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $song = $em->getRepository("AppBundle:Song")->find($id);
 
-        return new JsonResponse($this->get('app.serializer')->serializeObject($song));
+        $response = new Response($this->get('app.serializer')->serializeObject($song));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     /**
@@ -28,7 +31,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $songs = $em->getRepository("AppBundle:Song")->findAll();
 
-        return new JsonResponse($this->get('app.serializer')->serializeObject($songs));
+        $response = new Response($this->get('app.serializer')->serializeObject($songs));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     /**
@@ -39,7 +44,10 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $playlist = $em->getRepository("AppBundle:Playlist")->find($id);
 
-        return new JsonResponse($this->get('app.serializer')->serializeObject($playlist));
+        $response = new Response($this->get('app.serializer')->serializeObject($playlist));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+
     }
 
     /**
@@ -50,7 +58,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $playlists = $em->getRepository("AppBundle:Playlist")->findAll();
 
-        return new JsonResponse($this->get('app.serializer')->serializeObject($playlists));
+        $response = new Response($this->get('app.serializer')->serializeObject($playlists));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     /**
@@ -61,7 +71,9 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $tag = $em->getRepository("AppBundle:Tag")->find($id);
 
-        return new JsonResponse($this->get('app.serializer')->serializeObject($tag));
+        $response = new Response($this->get('app.serializer')->serializeObject($tag));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 
     /**
@@ -72,6 +84,8 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository("AppBundle:Tag")->findAll();
 
-        return new JsonResponse($this->get('app.serializer')->serializeObject($tags));
+        $response = new Response($this->get('app.serializer')->serializeObject($tags));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
     }
 }
