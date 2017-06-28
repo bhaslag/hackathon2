@@ -4,7 +4,7 @@ angular.module('DukeBox')
 
   .component('signup', {
     templateUrl: './app/js/components/login/signup.html',
-    controller: function () {
+    controller: function (AuthService) {
       'ngInject';
 
       this.$onInit = () => {};//this.$onInit

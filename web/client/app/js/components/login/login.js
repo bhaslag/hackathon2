@@ -4,7 +4,7 @@ angular.module('DukeBox')
 
   .component('login', {
     template: '<ui-view></ui-view>',
-    controller: function () {
+    controller: function (AuthService) {
       'ngInject';
 
       this.$onInit = () => {
