@@ -7,6 +7,13 @@ angular.module('DukeBox')
     controller: function () {
       'ngInject';
 
+      this.currentUser = {
+        firstName: 'Denis',
+        lastName: 'Loggé',
+        fullName: 'Denis Loggé',
+        avatar: 'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_1280.png'
+      };
+
       this.$onInit = () => {
 
         // Initialize collapse button

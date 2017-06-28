@@ -1,4 +1,3 @@
-<section>
   <md-toolbar class="md-accent">
     <div class="md-toolbar-tools">
       <h2>Sign in</h2>
@@ -6,26 +5,27 @@
       <a ui-sref="login.signup">Create a new account</a>
     </div>
   </md-toolbar>
-  <md-content class="signin md-whiteframe-z1">
-    <form name="form" method="post" ng-submit="$ctrl.signin()" novalidate>
-      <md-input-container class="md-block">
-        <label>Email address</label>
-        <input required md-no-asterisk name="email" ng-model="$ctrl.user.email">
-        <div ng-messages="form.email.$error">
-          <div ng-message="required">This field is required.</div>
-        </div>
-      </md-input-container>
-      <md-input-container class="md-block">
-        <label>Password</label>
-        <input required md-no-asterisk name="password" type="password" ng-model="$ctrl.user.password">
-        <div ng-messages="form.password.$error">
-          <div ng-message="required">This field is required.</div>
-        </div>
-      </md-input-container>
-      <md-button class="md-raised" type="submit">
-        Connect
-      </md-button>
-    </form>
+
+<div class="row">
+  <form class="col s12" name="form" method="post" ng-submit="$ctrl.signin()" novalidate>
+    <div class="row">
     </div>
-  </md-content>
-</section>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate" name="password" type="password" ng-model="$ctrl.user.password" required>
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate" name="email" ng-model="$ctrl.user.email" required>
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+    </div>
+  </form>
+</div>

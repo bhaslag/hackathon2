@@ -1,0 +1,14 @@
+<ul class="collapsible collection" data-collapsible="accordion">
+  <li class="collection-item avatar" ng-repeat="playlist in $ctrl.playlists track by playlist.id">
+    <div class="collapsible-header">
+      <i class="material-icons circle red">play_arrow</i><span class="title">{{playlist.title}}</span>
+    <p>Style : {{playlist.style}}</p>
+    </div>
+    <div class="collapsible-body">
+    <ul ng-repeat="song in playlist.songs">
+      <li>{{song.title}}</li>
+    </ul>
+  </div>
+    <!--body-->
+  </li>
+</ul>
