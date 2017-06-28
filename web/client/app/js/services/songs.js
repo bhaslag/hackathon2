@@ -3,11 +3,24 @@
 angular.module('DukeBox').service('SongsService', function ($http, $q) {
   'ngInject';
 
-  const API_URL = '/api/songs/';
+  const SONGS_URL = '/api/songs/';
+  const PLAY_URL = '/api/playlists/';
 
-  this.get = () => {
+
+  this.getSongs = () => {
     return $q((resolve, reject) => {
-      $http.get(API_URL).then((response) => {
+      $http.get(SONGS_URL).then((response) => {
+          resolve(response.data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  this.getPlaylists = () => {
+    return $q((resolve, reject) => {
+      $http.get(PLAY_URL).then((response) => {
           resolve(response.data);
         })
         .catch((err) => {
