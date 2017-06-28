@@ -4,7 +4,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\User;
 
-class LoadUserDataData extends AbstractFixture
+class LoadUserData extends AbstractFixture
 {
     public function load(ObjectManager $manager)
     {
