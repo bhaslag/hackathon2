@@ -1,9 +1,9 @@
 'use strict'
 
-angular.module('wildNoteApp')
+angular.module('DukeBox')
 
   .component('main', {
-    templateUrl: './app/components/main/main.html',
+    templateUrl: './app/js/components/main/main.html',
     controller: function () {
       'ngInject';
 

@@ -3,7 +3,7 @@
 angular.module('DukeBox')
 
   .component('sidebar', {
-    templateUrl: './app/components/header/header.html',
+    templateUrl: './app/js/components/sidebar/sidebar.html',
     controller: function () {
       'ngInject';
 
@@ -16,8 +16,8 @@ angular.module('DukeBox')
 
 
         this.states = [{
-          name: 'home',
-          displayName: 'Home'
+          name: 'sidebar',
+          displayName: 'sidebar'
         }]
       };
     }
