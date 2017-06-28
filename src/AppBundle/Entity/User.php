@@ -50,7 +50,7 @@ class User
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="Playlist", mappedBy="users")
+     * @ORM\OneToMany(targetEntity="Playlist", mappedBy="user")
      */
     private $playlists;
 

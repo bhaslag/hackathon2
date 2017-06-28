@@ -50,12 +50,12 @@ class Song
     private $datecreated;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Playlist", inversedBy="playlists")
+     * @ORM\ManyToOne(targetEntity="Playlist", inversedBy="songs")
      */
     private $playlist;
 
     /**
-     * @ORM\OneToMany(targetEntity="Tag", mappedBy="song")
+     * @ORM\ManyToMany(targetEntity="Tag", mappedBy="songs")
      */
     private $tags;
 

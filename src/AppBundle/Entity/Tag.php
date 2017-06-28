@@ -29,7 +29,7 @@ class Tag
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Song", mappedBy="tag")
+     * @ORM\ManyToMany(targetEntity="Song", inversedBy="tags")
      */
     private $songs;
 
