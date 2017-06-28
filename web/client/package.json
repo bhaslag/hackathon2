@@ -13,6 +13,7 @@
     "angular-local-storage": "^0.6.0",
     "angular-messages": "^1.6.4",
     "angular-resource": "^1.6.4",
+    "angular-sanitize": "^1.6.4",
     "angular-ui-router": "^1.0.3",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",

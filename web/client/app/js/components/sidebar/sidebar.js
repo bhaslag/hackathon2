@@ -5,7 +5,7 @@ angular.module('DukeBox')
   .component('sidebar', {
     templateUrl: './app/js/components/sidebar/sidebar.html',
 
-    controller: function (PlayListsService) {
+    controller: function (PlayListsService, $rootScope) {
       'ngInject';
 
       this.currentUser = {
@@ -17,8 +17,9 @@ angular.module('DukeBox')
 
       this.$onInit = () => {
         this.playLists = PlayListsService.query();
-        this.currentUser.playLists = this.playLists
-        console.log(this)
+        this.currentUser.playLists = this.playLists;
+        this.songUrl= "https://www.youtube.com/embed/Q8TXgCzxEnw?rel=0";
+        console.log(this.currentUser)
 
         // Initialize collapse button
         $(".button-collapse").sideNav();
@@ -26,5 +27,13 @@ angular.module('DukeBox')
         // $('.collapsible').collapsible();
 
       };
+
+      this.$onChanges = () => {
+        $rootScope.$on('playSong', (evt, url) => {
+          this.songUrl = url;
+        }); // $rootScope.$on('playSong'
+
+      }; //this.$onChanges
+
     }
   });

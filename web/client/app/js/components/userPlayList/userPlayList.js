@@ -17,7 +17,10 @@ angular.module('DukeBox')
         $('.collapsible').collapsible();
       };
 
-      this.
+      
+      this.playSong = (url) => {
+        $rootScope.$emit('playSong', url);
+      }; //this.playSong
 
     }
   });

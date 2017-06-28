@@ -4,7 +4,9 @@ angular.module('DukeBox', [
     "ui.router",
     'LocalStorageModule',
     'ngMessages',
-    'ngResource'
+    'ngResource',
+    'ngSanitize',
+    'ngYoutubeEmbed'
   ])
 
 
