@@ -16,6 +16,8 @@ angular.module('DukeBox')
       };
 
       this.$onInit = () => {
+        this.playLists = PlayListsService.query();
+        this.currentUser.playLists = this.playLists
         console.log(this)
 
         // Initialize collapse button
@@ -23,11 +25,6 @@ angular.module('DukeBox')
         // Initialize collapsible (uncomment the line below if you use the dropdown variation)
         // $('.collapsible').collapsible();
 
-
-        this.states = [{
-          name: 'sidebar',
-          displayName: 'sidebar'
-        }]
       };
     }
   });

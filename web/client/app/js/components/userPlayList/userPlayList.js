@@ -5,16 +5,19 @@ angular.module('DukeBox')
   .component('userPlayList', {
     templateUrl: './app/js/components/userPlayList/userPlayList.html',
 
-    controller: function (PlayListsService) {
+    bindings: {
+      playLists: '<'
+    },
+
+    controller: function (PlayListsService, $rootScope) {
       'ngInject';
 
       this.$onInit = () => {
-        this.playLists = PlayListsService.query();
-        console.log(this
-        )
+        console.log(this)
         $('.collapsible').collapsible();
-
       };
+
+      this.
 
     }
   });

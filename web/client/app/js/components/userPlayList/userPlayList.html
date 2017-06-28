@@ -6,7 +6,7 @@
     </div>
     <div class="collapsible-body">
     <ul ng-repeat="song in playList.songs">
-      <li>{{song.title}}</li>
+      <li ng-click="$ctrl.playSong(song.url)">{{song.title}}</li>
     </ul>
   </div>
     <!--body-->
