@@ -4,7 +4,7 @@ use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use AppBundle\Entity\User;
 
-class LoadUserData extends AbstractFixture
+class LoadUserData extends AbstractFixture implements \Doctrine\Common\DataFixtures\OrderedFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -13,14 +13,18 @@ class LoadUserData extends AbstractFixture
         $user1->setLastname('C');
         $user1->setUsername('awesome1');
         $user1->setPassword('quiterie');
+        $user1->addPlaylist($this->getReference('playlist1'));
+        $this->getReference('playlist1')->setUser($user1);
         $manager->persist($user1);
         $manager->flush();
 
         $user2 = new User();
         $user2->setFirstname('Sacha');
         $user2->setLastname('J');
-        $user2->setUsername('JSisbest');
+        $user2->setUsername('JSisBest');
         $user2->setPassword('sacha');
+        $user1->addPlaylist($this->getReference('playlist2'));
+        $this->getReference('playlist2')->setUser($user2);
         $manager->persist($user2);
         $manager->flush();
 
@@ -29,7 +33,14 @@ class LoadUserData extends AbstractFixture
         $user3->setLastname('B');
         $user3->setUsername('Angular4Ever');
         $user3->setPassword('bastien');
+        $user1->addPlaylist($this->getReference('playlist3'));
+        $this->getReference('playlist3')->setUser($user3);
         $manager->persist($user3);
         $manager->flush();
+    }
+
+    public function getOrder()
+    {
+        return 4;
     }
 }
