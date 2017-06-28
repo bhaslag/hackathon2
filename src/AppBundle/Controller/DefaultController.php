@@ -88,4 +88,30 @@ class DefaultController extends Controller
         $response->headers->set('Content-Type', 'application/json');
         return $response;
     }
+
+    /**
+     * @Route("/api/users/", name="api_users")
+     */
+    public function usersAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository("AppBundle:User")->findAll();
+
+        $response = new Response($this->get('app.serializer')->serializeObject($users));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
+
+    /**
+     * @Route("/api/user/{id}", name="api_user")
+     */
+    public function userAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository("AppBundle:User")->find($id);
+
+        $response = new Response($this->get('app.serializer')->serializeObject($user));
+        $response->headers->set('Content-Type', 'application/json');
+        return $response;
+    }
 }
