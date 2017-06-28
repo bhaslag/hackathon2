@@ -3,7 +3,8 @@
 angular.module('DukeBox', [
     "ui.router",
     'LocalStorageModule',
-    'ngMessages'
+    'ngMessages',
+    'ngResource'
   ])
 
 

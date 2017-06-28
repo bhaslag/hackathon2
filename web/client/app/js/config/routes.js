@@ -1,12 +1,17 @@
 'use strict';
 
-let Config = function ($stateProvider, $urlRouterProvider) {
+let Config = function ($stateProvider, $urlRouterProvider, SongsService) {
 
   const states = [{
     name: "home",
     url: "/",
     component: "home",
-    publicRoute: false
+    publicRoute: true,
+    resolve: {
+      songs: function (SongsService) {
+        return SongsService.query();
+      }
+    }
   }, {
     name: "sidebar",
     url: "/sidebar",
@@ -20,13 +25,13 @@ let Config = function ($stateProvider, $urlRouterProvider) {
     name: "login.signup",
     url: "/signup",
     component: "signup",
-    publicRoute: true
+    publicRoute: false
 
   }, {
     name: "login.signin",
     url: "/signin",
     component: "signin",
-    publicRoute: true
+    publicRoute: false
 
   }]
 
