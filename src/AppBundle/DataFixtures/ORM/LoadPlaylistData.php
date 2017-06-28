@@ -20,6 +20,7 @@ class LoadPlaylistData extends AbstractFixture implements \Doctrine\Common\DataF
         $this->getReference('song3')->setPlaylist($playlist1);
         $manager->persist($playlist1);
         $manager->flush();
+        $this->addReference('playlist1', $playlist1);
 
         $playlist2 = new Playlist();
         $playlist2->setName('Classic');
@@ -33,6 +34,7 @@ class LoadPlaylistData extends AbstractFixture implements \Doctrine\Common\DataF
         $this->getReference('song6')->setPlaylist($playlist2);
         $manager->persist($playlist2);
         $manager->flush();
+        $this->addReference('playlist2', $playlist2);
 
         $playlist3 = new Playlist();
         $playlist3->setName('Rock');
@@ -46,6 +48,7 @@ class LoadPlaylistData extends AbstractFixture implements \Doctrine\Common\DataF
         $this->getReference('song9')->setPlaylist($playlist3);
         $manager->persist($playlist3);
         $manager->flush();
+        $this->addReference('playlist3', $playlist3);
     }
 
     public function getOrder()
