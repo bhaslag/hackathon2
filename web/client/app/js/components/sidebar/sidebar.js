@@ -4,7 +4,8 @@ angular.module('DukeBox')
 
   .component('sidebar', {
     templateUrl: './app/js/components/sidebar/sidebar.html',
-    controller: function () {
+
+    controller: function (PlayListsService) {
       'ngInject';
 
       this.currentUser = {
@@ -15,6 +16,7 @@ angular.module('DukeBox')
       };
 
       this.$onInit = () => {
+        console.log(this)
 
         // Initialize collapse button
         $(".button-collapse").sideNav();
