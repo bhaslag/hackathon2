@@ -96,7 +96,7 @@ class DefaultController extends Controller
     /**
      * @Route("/api/tags/", name="api_tags")
      */
-    public function tagsAction(Request $request, $id)
+    public function tagsAction(Request $request)
     {
         $encoders = array(new XmlEncoder(), new JsonEncoder());
         $normalizers = array(new ObjectNormalizer());
