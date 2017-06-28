@@ -1,16 +1,6 @@
-body {
-    background-image: url(../../../../images/background.jpg);
-    background-color: rgba(0, 0, 0, 0.3);
+html {
+  background: 
+    url(../../../../images/background.jpg);
     background-size: 100%;
     background-repeat: no-repeat;
-}
-
-body:hover:after {
-    content: ' ';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,.5);
 }

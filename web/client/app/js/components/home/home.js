@@ -3,16 +3,20 @@
 angular.module('DukeBox')
 
   .component('home', {
-    templateUrl: './app/js/components/home/home.html',
-    bindings: {
-      songs: '<'
-    },
-    controller: function (SongsService) {
-      'ngInject';
+      templateUrl: './app/js/components/home/home.html',
+      bindings: {
+        songs: '<'
+      },
+      controller: function () {
+        'ngInject';
 
-      this.$onInit = (SongsService) => {
+        this.$onInit = () => {
 
-        console.log(this.songs);
+          // SongsService.get().then((songs) => {
+          //     this.songs = songs;
+          //     console.log(this.songs);
+          //   }) 
+          console.log(this.songs)
+        }
       }
-    }
-  });
+  })
