@@ -17,7 +17,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $song = $em->getRepository("AppBundle:Song")->find($id);
 
-        return new JsonResponse(array('data' => $this->get('app.serializer')->serializeObject($song)));
+        return new JsonResponse($this->get('app.serializer')->serializeObject($song));
     }
 
     /**
@@ -28,7 +28,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $songs = $em->getRepository("AppBundle:Song")->findAll();
 
-        return new JsonResponse(array('data' => $this->get('app.serializer')->serializeObject($songs)));
+        return new JsonResponse($this->get('app.serializer')->serializeObject($songs));
     }
 
     /**
@@ -39,7 +39,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $playlist = $em->getRepository("AppBundle:Playlist")->find($id);
 
-        return new JsonResponse(array('data' => $this->get('app.serializer')->serializeObject($playlist)));
+        return new JsonResponse($this->get('app.serializer')->serializeObject($playlist));
     }
 
     /**
@@ -50,7 +50,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $playlists = $em->getRepository("AppBundle:Playlist")->findAll();
 
-        return new JsonResponse(array('data' => $this->get('app.serializer')->serializeObject($playlists)));
+        return new JsonResponse($this->get('app.serializer')->serializeObject($playlists));
     }
 
     /**
@@ -61,7 +61,7 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $tag = $em->getRepository("AppBundle:Tag")->find($id);
 
-        return new JsonResponse(array('data' => $this->get('app.serializer')->serializeObject($tag)));
+        return new JsonResponse($this->get('app.serializer')->serializeObject($tag));
     }
 
     /**
@@ -72,6 +72,6 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $tags = $em->getRepository("AppBundle:Tag")->findAll();
 
-        return new JsonResponse(array('data' => $this->get('app.serializer')->serializeObject($tags)));
+        return new JsonResponse($this->get('app.serializer')->serializeObject($tags));
     }
 }

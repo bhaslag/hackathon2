@@ -12,9 +12,13 @@ class SerializeObject
     public function serializeObject($object)
     {
         $encoders = array(new XmlEncoder(), new JsonEncoder());
-        $normalizers = array(new ObjectNormalizer());
+        $normalizer = new ObjectNormalizer();
 
-        $serializer = new Serializer($normalizers, $encoders);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+
+        $serializer = new Serializer(array($normalizer), $encoders);
 
         $jsonContent = $serializer->serialize($object, 'json');
 
