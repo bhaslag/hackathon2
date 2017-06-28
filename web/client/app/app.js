@@ -10,7 +10,7 @@ angular.module('DukeBox', [
 
   .constant('CONSTANTS', {
     authEvent: 'AUTH',
-    authUrl: '/api/auth',
+    authUrl: '/login_check',
     usersUrl: '/api/users',
-    authToken: 'mean-token',
+    authToken: 'duke-token',
   });
