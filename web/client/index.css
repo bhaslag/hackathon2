@@ -16,6 +16,14 @@
   right: 25px;
 }
 
-ng-youtube-embed{
-  width:200px;
+
+.collection .collection-item.active {
+  background-color: inherit;
+  color: black;
+}
+
+.songInPlayList:hover{
+cursor: pointer;
+background-color: #f2f2f2;
+
 }
