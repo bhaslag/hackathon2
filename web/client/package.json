@@ -12,6 +12,8 @@
     "angular": "^1.6.4",
     "angular-resource": "^1.6.4",
     "angular-ui-router": "^1.0.3",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
     "materialize-css": "^0.99.0"
   }
 }
