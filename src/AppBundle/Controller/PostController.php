@@ -23,7 +23,5 @@ class Post extends Controller
         $post = json_decode('request', $request);
 
         $em = $this->getDoctrine()->getManager();
-
-        if ()
     }
 }
