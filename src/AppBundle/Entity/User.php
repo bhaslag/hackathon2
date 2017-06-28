@@ -50,6 +50,13 @@ class User
     private $password;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=255)
+     */
+    private $email;
+
+    /**
      * @ORM\OneToMany(targetEntity="Playlist", mappedBy="user")
      */
     private $playlists;
@@ -200,5 +207,29 @@ class User
     public function getPlaylists()
     {
         return $this->playlists;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     *
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 }
