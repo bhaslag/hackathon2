@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('wildNoteApp')
+angular.module('DukeBox')
 
   .component('header', {
     templateUrl: './app/components/header/header.html',
