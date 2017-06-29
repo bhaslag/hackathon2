@@ -9,10 +9,23 @@
     </div>
   </li>
 
-  <user-play-list></user-play-list>
+  <user-play-list play-lists="$ctrl.currentUser.playLists"></user-play-list>
+
+  <!--<div class="video-container">
+    <iframe width="853" height="480" ng-src="{{$ctrl.songUrl}}" frameborder="0" allowfullscreen></iframe>
+  </div>-->
 
   <div class="video-container">
-    <iframe width="853" height="480" src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0" frameborder="0" allowfullscreen></iframe>
+    <youtube-video video-url="$ctrl.songUrl"></youtube-video>
+
+    <!--<ng-youtube-embed class="videoPlayerResponsive" 
+    video="$ctrl.songUrl" 
+    playlist="$ctrl.urlList"
+    autoplay="true" 
+    color="white" 
+    disablekb="true"
+    modestbranding="true">
+    </ng-youtube-embed>-->
   </div>
 
 </ul>
