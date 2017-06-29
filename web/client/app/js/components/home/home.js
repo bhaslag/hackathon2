@@ -6,14 +6,16 @@ angular.module('DukeBox')
       templateUrl: './app/js/components/home/home.html',
       bindings: {
         songs: '<',
-        playlists : '<'
+        playlists : '<',
+        tags : '<'
       },
       controller: function () {
         'ngInject';
 
         this.$onInit = () => {
-          console.log(this.songs)
-          console.log(this.playlists)
+          console.log(this.songs);
+          console.log(this.playlists);
+          console.log(this.tags);
         }
       }
   })
