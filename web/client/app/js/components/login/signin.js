@@ -16,6 +16,7 @@ angular.module('DukeBox')
           // $mdToast.showSimple(`Error : ${err} !`);
           Materialize.toast(`Error : ${err} !`, 6000)
         });
+        console.log(this.user)
       }; //this.signin
 
       // this.signin = () => {

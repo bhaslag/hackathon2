@@ -1,20 +1,23 @@
 'use strict';
 
-let Config = function ($stateProvider, $urlRouterProvider, SongsService) {
+let Config = function ($stateProvider, $urlRouterProvider, SongsService, TagsService) {
 
   const states = [{
     name: "home",
     url: "/",
     component: "home",
     publicRoute: true,
-    // resolve: {
-    //   songs: function (SongsService) {
-    //     return SongsService.getSongs();
-    //   },
-    //   playlists: function (SongsService) {
-    //     return SongsService.getPlaylists();
-    //   }
-    // }
+    resolve: {
+      songs: function (SongsService) {
+        return SongsService.getSongs();
+      },
+      playlists: function (SongsService) {
+        return SongsService.getPlaylists();
+      },
+      tags : function (TagsService) {
+        return TagsService.query();
+      }
+    }
   }, {
     name: "sidebar",
     url: "/sidebar",

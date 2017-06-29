@@ -3,16 +3,21 @@
 <head>
     <meta charset="utf-8" />
 </head>
-<nav>
-    <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-            <li><a href="collapsible.html">JavaScript</a></li>
-        </ul>
-    </div>
-</nav>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a ui-sref="home" class="brand-logo">
+             <img class="logo" src="./app/images/wild.jpg">
+             WildEars
+        </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a ui-sref="home">Parcourir</a></li>
+                <li><a ui-sref="myProfile">Mon Profil</a></li>
+                <li><a href="collapsible.html">Déconnexion</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
 <sidebar></sidebar>
 <div class="row">
     <form class="col s12">
@@ -34,13 +39,41 @@
             <span class="card-title">{{playlist.name}}</span>
             <div class="chip">
                 <img ng-src="{{playlist.submitter.avatar}}" alt="Contact Person"> Jane Doe
+<div class="all-cards">
+    <div class="row">
+        <div class="col s12 card">
+            <span class="card-title titles">Browse by playlists</span>
+            <div class="row">
+                <div class="col m3 card panel hoverable" ng-repeat="playlist in $ctrl.playlists">
+                    <span class="card-title">{{playlist.name}}</span>
+                    <div class="chip" on-click="goToProfile()">
+                        <i class="material-icons">perm_identity</i> {{playlist.user.username}}
+                    </div>
+                    <div class="chip"> {{playlist.songs.length}} songs</div>
+                    <a class="btn-floating halfway-fab waves-effect circle red"><i class="material-icons">play_arrow</i></a>
+                    <div class="tags"> {{song.tags}}</div>
+                    <div class="card-content" ng-repeat="song in playlist.songs">
+                        {{song.title}}
+                    </div>
+                </div>
             </div>
-            <div class="chip"> {{playlist.songs.length}}</div>
-            <br>
-            <div class="tags"> {{song.tags}}</div>
-            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-            <div class="card-content">
-                <p></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 card">
+            <span class="card-title titles">Browse by genres</span>
+            <div class="row">
+                <div class="col m3 card panel hoverable" ng-repeat="tag in $ctrl.tags">
+                    <span class="card-title">{{tag.name}}</span>
+                    <div class="chip"> {{tag.songs.length}}</div>
+                    <a class="btn-floating halfway-fab waves-effect circle red"><i class="material-icons">play_arrow</i></a>
+                    <div class="card-content" ng-repeat="song in tag.songs track by $index">
+                        <ul>
+                            <li>{{song.title}}</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

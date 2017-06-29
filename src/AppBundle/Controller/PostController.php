@@ -14,7 +14,7 @@ use Symfony\Component\BrowserKit\Request;
 
 class PostController extends Controller
 {
-
+//
 //    /**
 //     * @Route("/api/post/", name="api_post")
 //     */
@@ -22,7 +22,10 @@ class PostController extends Controller
 //    {
 //        $post = json_decode('request', $request);
 //
+////        $data = $form->$url;
+//
 //        $em = $this->getDoctrine()->getManager();
+//        $em->persist($data);
 //        return $this;
 //    }
 }
