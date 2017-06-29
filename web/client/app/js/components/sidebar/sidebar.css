@@ -1,0 +1,29 @@
+.modal-overlay {
+    z-index: -1 !important;
+    display: block !important;
+    opacity: none !important;
+}
+
+.waves-light {
+    /*position: fixed;*/
+    margin-bottom : 0px;
+    width:140px;
+}
+
+.modal-fixed-footer {
+    z-index: 100000 !important;
+    width: 300px;
+    background-color: rgba(255,255,255,0.95);
+}
+
+ul {
+    z-index: 1000 !important;
+}
+
+.input-field {
+    margin-bottom: 20px;
+}
+
+.input-field > input {
+    padding-top: 10px !important;
+}

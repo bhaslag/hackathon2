@@ -10,7 +10,7 @@ p {
     margin-top: 5px;
     width: 60px;
     border-radius: 50px;
-    border: 2px solid lightskyblue;
+    border : 1px solid grey;
 }
 
 .navbar {
@@ -20,7 +20,7 @@ p {
 }
 
 .all-cards {
-    max-width: 1290px;
+    max-width: 1250px;
     float: right;
     margin: 20px;
     overflow: hidden;
@@ -51,6 +51,7 @@ p {
     font-size: 1.1em;
     padding: 0px !important;
     margin: 0px !important;
+    background-color: rgba(0,0,0,0) !important;
 }
 
 .collection {
@@ -64,4 +65,12 @@ p {
     overflow: auto;
     margin: 10px !important;
     padding: 0px !important;
+}
+
+.card, .card-content {
+    padding: 5px !important;
+}
+
+.material-icons {
+    cursor: pointer;
 }
