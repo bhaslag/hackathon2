@@ -36,51 +36,58 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/api/createplaylist/", name="api_createplaylist")
+     * @Route("/api/playlists", name="api_createplaylist", methods={"POST"})
      */
     public function createPlaylistAction(Request $request)
     {
+        $datas = json_decode($request->getContent());
+//        var_dump($datas->name);
+//        var_dump($datas->username);
+//        var_dump($datas->tags);
+
+//        foreach ($datas->songs as $song)
+//        {
+//            var_dump($song->id->videoId);
+//        }
+//        var_dump($datas);
         $em = $this->getDoctrine()->getManager();
 //        $dataplaylist = json_decode($request->getContent(), true);
 
-        $id = 7;
-        $dplaylist = $em->getRepository(Playlist::class)->find($id);
-        $playlistJson = $this->get('app.serializer')->serializeObject($dplaylist);
-        $dataplaylist = json_decode($playlistJson, true);
-var_dump($dataplaylist);
+//        $id = 7;
+//        $dplaylist = $em->getRepository(Playlist::class)->find($id);
+//        $playlistJson = $this->get('app.serializer')->serializeObject($dplaylist);
+//        $dataplaylist = json_decode($playlistJson, true);
+//var_dump($dataplaylist);
+
         $playlist = new Playlist();
         $playlist
-            ->setName($dataplaylist['name'])
+            ->setName($datas->name)
             ->setDatecreated(new \DateTime())
         ;
 
-        $songs = $dataplaylist['songs'];
-
-        var_dump($songs);
-
-        foreach ($songs as $song)
+        foreach ($datas->songs as $song)
         {
             $newsong = new Song();
             $em = $this->getDoctrine()->getManager();
 
-            $newsong->setUrl($song['url'])
-                    ->setTitle($song['title'])
-                    ->setArtist($song['artist'])
+            $newsong->setUrl("https://www.youtube.com/watch?v=".$song->id->videoId)
+                    ->setTitle($song->title)
+                    ->setArtist($song->artist)
                     ->setPlaylist($playlist)
                     ->setDatecreated(new \DateTime())
             ;
 
-            $tags = $song['tags'];
-
-            foreach($tags as $tag)
-            {
-                $em = $this->getDoctrine()->getManager();
-
-                $tagbdd = $em->getRepository('AppBundle:Tag')->find($tag['id']);
-                $newsong->addTag($tagbdd);
-                $tagbdd->addSong($newsong);
-
-            }
+//            $tags = $song['tags'];
+//
+//            foreach($tags as $tag)
+//            {
+//                $em = $this->getDoctrine()->getManager();
+//
+//                $tagbdd = $em->getRepository('AppBundle:Tag')->find($tag['id']);
+//                $newsong->addTag($tagbdd);
+//                $tagbdd->addSong($newsong);
+//
+//            }
 
             $em->persist($newsong);
         }

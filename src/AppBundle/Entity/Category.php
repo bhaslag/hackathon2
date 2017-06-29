@@ -29,7 +29,7 @@ class Category
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity="Playlist", mappedBy="categories")
      */
     private $playlists;
 

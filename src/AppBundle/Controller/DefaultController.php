@@ -69,7 +69,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/api/playlists/", name="api_playlists")
+     * @Route("/api/playlists/", name="api_playlists", methods={"GET"})
      */
     public function playlistsAction(Request $request)
     {
