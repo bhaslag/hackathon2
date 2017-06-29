@@ -7,17 +7,17 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService, TagsSer
       url: "/",
       component: "home",
       publicRoute: true,
-      resolve: {
-        songs: function (SongsService) {
-          return SongsService.getSongs();
-        },
-        playlists: function (SongsService) {
-          return SongsService.getPlaylists();
-        },
-        tags: function (TagsService) {
-          return TagsService.query();
-        }
-      }
+      // resolve: {
+      //   songs: function (SongsService) {
+      //     return SongsService.getSongs();
+      //   },
+      //   playlists: function (SongsService) {
+      //     return SongsService.getPlaylists();
+      //   },
+      //   tags: function (TagsService) {
+      //     return TagsService.query();
+      //   }
+      // }
     },
     {
       name: "sidebar",
