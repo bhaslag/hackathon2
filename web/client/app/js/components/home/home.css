@@ -15,18 +15,48 @@ navbar {
     right: 0;
 }
 
-.card {
-    margin: 5px;
-}
-
 .all-cards {
-    max-width: 1200px;
+    max-width: 1270px;
     float: right;
-    margin: 40px;
+    margin: 20px;
 }
 
 .titles {
-    color: #ee6e73;
     font-weight: 300;
     font-size: 2em !important;
+}
+
+.card-title {
+    font-size: 1.5em;
+}
+
+.play {
+    border-radius: 20px;
+    width: 60px;
+    height: 25px;
+    background-color: rgba(0, 0, 0, 0.6);
+    margin: auto;
+}
+
+.browse {
+    background-color: rgba(255, 255, 255, 0.5)
+}
+
+.collection .collection-item {
+    font-size: 1.1em;
+    padding: 0px !important;
+    margin: 0px !important;
+}
+
+.collection {
+     border: none;
+}
+
+.card-content .row {
+    padding: 0px !important;
+    margin : 0px !important;
+}
+
+.card {
+    margin: 5px;
 }
