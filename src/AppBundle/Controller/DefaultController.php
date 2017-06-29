@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -9,6 +10,25 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
+    /**
+     * @Route("/log", name="log")
+     */
+    public function infosAction(Request $request)
+    {
+        $email = str_replace('{"email":"','', $request->getContent());
+        $pos = strpos($email, '"');
+        $email = substr($email, 0, $pos);
+
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->findOneByEmail($email);
+
+        $service = $this->get('lexik_jwt_authentication.handler.authentication_success');
+        $response = $service->handleAuthenticationSuccess($user);
+        $token = json_encode($response->getContent());
+
+        return new Response(str_replace("\\",'', $token));
+    }
+
     /**
      * @Route("/api/song/{id}", name="api_song")
      */
