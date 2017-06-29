@@ -6,6 +6,7 @@ angular.module('DukeBox')
 
     templateUrl: './app/js/components/home/home.html',
     bindings: {
+      tags: '<',
       songs: '<',
       playlists: '<'
     },
