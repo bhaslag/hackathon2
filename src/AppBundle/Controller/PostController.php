@@ -9,23 +9,22 @@
 namespace AppBundle\Controller;
 
 
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class PostController extends Controller
 {
-//
-//    /**
-//     * @Route("/api/post/", name="api_post")
-//     */
-//    public function postAction(Request $request)
-//    {
-//        $post = json_decode('request', $request);
-//
-////        $data = $form->$url;
-//
-//        $em = $this->getDoctrine()->getManager();
+
+    /**
+     * @Route("/api/post/", name="api_post")
+     */
+    public function postAction(Request $request)
+    {
+        $post = json_decode('request', $request);
+
+        $em = $this->getDoctrine()->getManager();
 //        $em->persist($data);
-//        return $this;
-//    }
+        return $this;
+    }
 }
