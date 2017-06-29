@@ -1,11 +1,31 @@
 'use strict';
 
-angular.module('DukeBox').factory('SongsService', function ($resource) {
+angular.module('DukeBox').service('SongsService', function ($http, $q) {
   'ngInject';
 
-  let SONGS_URL = '/api/songs'
+  const SONGS_URL = '/api/songs/';
+  const PLAY_URL = '/api/playlists/';
 
-  return $resource(SONGS_URL + '/:id', {
-    id: '@id'
-  })
+
+  this.getSongs = () => {
+    return $q((resolve, reject) => {
+      $http.get(SONGS_URL).then((response) => {
+          resolve(response.data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+
+  this.getPlaylists = () => {
+    return $q((resolve, reject) => {
+      $http.get(PLAY_URL).then((response) => {
+          resolve(response.data);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
 })
