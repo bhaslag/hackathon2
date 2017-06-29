@@ -43,6 +43,15 @@ class User extends BaseUser
 
 
     /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->playlists = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return int
@@ -101,15 +110,6 @@ class User extends BaseUser
     }
 
     /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->playlists = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
      * Add playlist
      *
      * @param \AppBundle\Entity\Playlist $playlist
@@ -142,4 +142,5 @@ class User extends BaseUser
     {
         return $this->playlists;
     }
+
 }
