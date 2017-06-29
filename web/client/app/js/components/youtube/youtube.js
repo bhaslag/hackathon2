@@ -20,6 +20,7 @@ angular.module('DukeBox')
       }
 
       this.searchYoutube = (param) => {
+        this.results = [];
         YoutubeAPI.getVideos(param).then((data) => {
           this.results = data.data.items;
           console.log(this.results);
