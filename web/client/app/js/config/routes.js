@@ -41,12 +41,6 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService, TagsSer
 
     },
     {
-      name: "login.signin",
-      url: "/signin",
-      component: "signin",
-      publicRoute: false
-    },
-    {
       name: "youtube",
       url: "/search",
       component: "youtube",

@@ -25,8 +25,14 @@ angular.module('DukeBox')
         $(".button-collapse").sideNav();
         // Initialize collapsible (uncomment the line below if you use the dropdown variation)
         // $('.collapsible').collapsible();
-
+              
+        $('.modal').modal();
+        $('.trigger-modal').modal();
       };
+
+      this.close = () => {
+         $('#modal1').modal('close');
+      }
 
       this.$onChanges = () => {
 
