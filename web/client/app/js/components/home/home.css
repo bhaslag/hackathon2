@@ -39,6 +39,7 @@ p {
 
 .mytitle {
     background-color: #ef6b7f;
+    padding: 5px;
 }
 
 .browse {
@@ -58,8 +59,9 @@ p {
 
 .row .hoverable {
     max-width: 380px;
-    min-height: 250px;
+    min-height: 400px;
     max-height: 400px;
     overflow: auto;
     margin: 10px !important;
+    padding: 0px !important;
 }
