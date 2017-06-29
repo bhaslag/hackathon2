@@ -151,7 +151,7 @@ class LoadTagData extends AbstractFixture implements \Doctrine\Common\DataFixtur
 
     public function getOrder()
     {
-        return 1;
+        return 2;
     }
 }
 
