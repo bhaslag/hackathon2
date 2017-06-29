@@ -30,14 +30,18 @@ angular.module('DukeBox')
 
       this.$onChanges = () => {
 
-        $scope.$on('youtube.player.ready', function ($event, player) {
+        $scope.$on('youtube.player.ready', ($event, player) => {
           // play it again
           player.playVideo();
         });
 
-        $scope.$on('youtube.player.ended', function ($event, player) {
-          // play it again
-          player.playVideo();
+        $scope.$on('youtube.player.ended', ($event, player) => {
+          console.log(this.urlList)
+          if (this.urlList.length > 0) {
+            this.songUrl = this.urlList[0];
+            this.urlList.splice(0, 1);
+            player.playVideo();
+          }
         });
 
         $rootScope.$on('playSong', (evt, url) => {
@@ -53,6 +57,7 @@ angular.module('DukeBox')
               this.urlList.push(list[i]);
             }
           }
+          console.log(this.urlList)
         }); // $rootScope.$on('playPlayList'
 
       }; //this.$onChanges
