@@ -17,6 +17,7 @@ class DefaultController extends Controller
     {
         preg_match('/[\w.-]+@[\w.-]{2,}\.[a-z]{2,5}/', $request->getContent(), $matches);
         $email = $matches[0];
+
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findOneByEmail($email);
 
