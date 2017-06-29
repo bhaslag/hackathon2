@@ -20,11 +20,6 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService, TagsSer
       }
     },
     {
-      name: "sidebar",
-      url: "/sidebar",
-      component: "sidebar"
-    },
-    {
       name: "login",
       url: "",
       component: "login",

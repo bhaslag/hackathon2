@@ -5,21 +5,20 @@ angular.module('DukeBox')
   .component('sidebar', {
     templateUrl: './app/js/components/sidebar/sidebar.html',
 
-    controller: function (PlayListsService, $rootScope, $scope) {
+    controller: function ($scope, $rootScope) {
       'ngInject';
 
-      this.currentUser = {
-        firstName: 'Denis',
-        lastName: 'Loggé',
-        fullName: 'Denis Loggé',
-        avatar: 'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_1280.png'
-      };
+      // this.currentUser = {
+      //   firstName: 'Denis',
+      //   lastName: 'Loggé',
+      //   fullName: 'Denis Loggé',
+      //   avatar: 'https://cdn.pixabay.com/photo/2016/08/20/05/38/avatar-1606916_1280.png'
+      // };
 
       this.$onInit = () => {
-        this.playLists = PlayListsService.query();
-        this.currentUser.playLists = this.playLists;
-        this.songUrl = "https://www.youtube.com/embed/Q8TXgCzxEnw?rel=0";
-        console.log(this.currentUser)
+        // this.playLists = PlayListsService.query();
+        // this.currentUser.playLists = this.playLists;
+        // this.songUrl = "https://www.youtube.com/embed/Q8TXgCzxEnw?rel=0";
 
         // Initialize collapse button
         $(".button-collapse").sideNav();
