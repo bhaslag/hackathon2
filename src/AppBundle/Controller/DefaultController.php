@@ -15,9 +15,8 @@ class DefaultController extends Controller
      */
     public function infosAction(Request $request)
     {
-        $email = str_replace('{"email":"','', $request->getContent());
-        $pos = strpos($email, '"');
-        $email = substr($email, 0, $pos);
+        $email = str_replace('{"password":"1234","email":"','', $request->getContent());
+        $email = str_replace('"}','', $email);
 
         $em = $this->getDoctrine()->getManager();
         $user = $em->getRepository(User::class)->findOneByEmail($email);
