@@ -84,6 +84,7 @@ fos_user:
         sender_name: "%mailer_user%"
 
 #nelmio/CORS config
+
 nelmio_cors:
     paths:
         '^/api/':

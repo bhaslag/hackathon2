@@ -5,14 +5,14 @@ angular.module('DukeBox', [
     'LocalStorageModule',
     'ngMessages',
     'ngResource',
-    'jtt_youtube',
     'ngSanitize',
-    'youtube-embed'
+    'youtube-embed',
+    'jtt_youtube'
   ])
 
   .constant('CONSTANTS', {
     authEvent: 'AUTH',
-    authUrl: '/api/login_check',
+    authUrl: 'http://localhost:8000/log',
     usersUrl: '/api/users',
     authToken: 'duke-token',
     Youtube_API_KEY: 'AIzaSyCZRnJtykOp7rTuV3W0cm3d8J-JgGYu6lU'
