@@ -7,14 +7,14 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService) {
     url: "/",
     component: "home",
     publicRoute: true,
-    resolve: {
-      songs: function (SongsService) {
-        return SongsService.getSongs();
-      },
-      playlists: function (SongsService) {
-        return SongsService.getPlaylists();
-      }
-    }
+    // resolve: {
+    //   songs: function (SongsService) {
+    //     return SongsService.getSongs();
+    //   },
+    //   playlists: function (SongsService) {
+    //     return SongsService.getPlaylists();
+    //   }
+    // }
   }, {
     name: "sidebar",
     url: "/sidebar",

@@ -15,6 +15,19 @@
 </nav>
 <sidebar></sidebar>
 <div class="row">
+    <form class="col s12">
+        <div class="row">
+            <div class="input-field col s9">
+                <input placeholder="Search" id="search_field" type="text" class="validate" ng-model="query">
+                <label for="first_name">Search</label>
+            </div>
+            <button class="btn waves-effect waves-light col s3" ng-click='$ctrl.searchYoutube(query)' name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+        </div>
+    </form>
+</div>
+<!--<div class="row">
     <div class="col m3">
         <div class="card panel hoverable" ng-repeat="playlist in $ctrl.playlists" ng-repeat="song in playlist.songs">
             {{playlist.id}}
@@ -31,8 +44,8 @@
             </div>
         </div>
     </div>
-</div>
-</div>
+</div>-->
+
 
 
 

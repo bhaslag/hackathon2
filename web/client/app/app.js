@@ -4,7 +4,8 @@ angular.module('DukeBox', [
     "ui.router",
     'LocalStorageModule',
     'ngMessages',
-    'ngResource'
+    'ngResource',
+    'jtt_youtube'
   ])
 
 
@@ -13,4 +14,5 @@ angular.module('DukeBox', [
     authUrl: 'http://localhost:8000/api/login_check',
     usersUrl: '/api/users',
     authToken: 'duke-token',
+    Youtube_API_KEY: 'AIzaSyCZRnJtykOp7rTuV3W0cm3d8J-JgGYu6lU'
   });

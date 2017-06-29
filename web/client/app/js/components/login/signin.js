@@ -11,11 +11,6 @@ angular.module('DukeBox')
 
       this.signin = () => {
         // Local authentication mode
-        let new_user = {
-          'email': this.user.email,
-          'password': this.user.password
-        };
-        console.log(new_user);
 
         AuthService.login(this.user).then(() => {}).catch((err) => {
           // $mdToast.showSimple(`Error : ${err} !`);

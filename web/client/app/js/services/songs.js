@@ -3,8 +3,8 @@
 angular.module('DukeBox').service('SongsService', function ($http, $q) {
   'ngInject';
 
-  const SONGS_URL = '/api/songs/';
-  const PLAY_URL = '/api/playlists/';
+  const SONGS_URL = 'http://localhost:8000/api/songs/';
+  const PLAY_URL = 'http://localhost:8000/api/playlists/';
 
 
   this.getSongs = () => {
