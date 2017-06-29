@@ -10,21 +10,21 @@ angular.module('DukeBox')
 
       this.$onInit = () => {
         console.log('salut');
-         this.urlList = [];
-         this.songsList = [];
+        this.urlList = [];
+        this.songsList = [];
 
         $(".button-collapse").sideNav();
         // Initialize collapsible (uncomment the line below if you use the dropdown variation)
 
         // $('.collapsible').collapsible();
-              
+
         $('.modal').modal();
         $('.trigger-modal').modal();
 
       };
 
       this.close = () => {
-         $('#modal1').modal('close');
+        $('#modal1').modal('close');
       }
 
       this.$onChanges = () => {
@@ -73,5 +73,9 @@ angular.module('DukeBox')
         $rootScope.$emit('playSong', obj.id.videoId);
       }
 
+      this.clearList = (player) => {
+        this.songsList = [];
+        this.urlList = [];
+      }
     }
   });
