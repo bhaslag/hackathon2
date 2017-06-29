@@ -1,3 +1,32 @@
-.home {
-    background-image: none;
+p {
+    width: 180px
+}
+
+.logo {
+    margin-top: 5px;
+    width: 60px;
+    border-radius: 50px;
+    border: 2px solid lightskyblue;
+}
+
+navbar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.card {
+    margin: 5px;
+}
+
+.all-cards {
+    max-width: 1200px;
+    float: right;
+    margin: 40px;
+}
+
+.titles {
+    color: #ee6e73;
+    font-weight: 300;
+    font-size: 2em !important;
 }

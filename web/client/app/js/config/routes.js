@@ -1,6 +1,6 @@
 'use strict';
 
-let Config = function ($stateProvider, $urlRouterProvider, SongsService) {
+let Config = function ($stateProvider, $urlRouterProvider, SongsService, TagsService) {
 
   const states = [{
     name: "home",
@@ -13,6 +13,9 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService) {
       },
       playlists: function (SongsService) {
         return SongsService.getPlaylists();
+      },
+      tags : function (TagsService) {
+        return TagsService.query();
       }
     }
   }, {
