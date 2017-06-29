@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var int
@@ -19,48 +20,36 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, unique=true)
-     */
-    private $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="firstname", type="string", length=255)
+     * @ORM\Column(name="firstname", type="string", length=255, nullable=true)
      */
     private $firstname;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastname", type="string", length=255)
+     * @ORM\Column(name="lastname", type="string", length=255, nullable=true)
      */
     private $lastname;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=20)
-     */
-    private $password;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     */
-    private $email;
 
     /**
      * @ORM\OneToMany(targetEntity="Playlist", mappedBy="user")
      */
     private $playlists;
 
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->playlists = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -73,37 +62,13 @@ class User
     }
 
     /**
-     * Set username
-     *
-     * @param string $username
-     *
-     * @return User
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get username
-     *
-     * @return string
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
      * Set firstname
      *
      * @param string $firstname
      *
      * @return User
      */
-    public function setFirstname($firstname)
+    public function setFirstname($firstname = null)
     {
         $this->firstname = $firstname;
 
@@ -127,7 +92,7 @@ class User
      *
      * @return User
      */
-    public function setLastname($lastname)
+    public function setLastname($lastname = null)
     {
         $this->lastname = $lastname;
 
@@ -142,37 +107,6 @@ class User
     public function getLastname()
     {
         return $this->lastname;
-    }
-
-    /**
-     * Set password
-     *
-     * @param string $password
-     *
-     * @return User
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->password;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->playlists = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -208,4 +142,5 @@ class User
     {
         return $this->playlists;
     }
+
 }

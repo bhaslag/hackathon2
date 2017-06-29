@@ -6,10 +6,10 @@ angular.module('DukeBox')
       templateUrl: './app/js/components/home/home.html',
       bindings: {
         songs: '<',
-        playlists : '<',
-        tags : '<'
+        playlists: '<',
+        tags: '<'
       },
-      controller: function () {
+      controller: function ($rootScope) {
         'ngInject';
 
         this.$onInit = () => {
@@ -17,5 +17,19 @@ angular.module('DukeBox')
           console.log(this.playlists);
           console.log(this.tags);
         }
+
+        this.playSong = (url) => {
+          $rootScope.$emit('playSong', url);
+        }
+
+        this.playPlayList = (list) => {
+          let urlTable = [];
+
+          for (let i = 0, len = list.length; i < len; i++) {
+            urlTable.push(list[i].url);
+          } //for
+
+          $rootScope.$emit('playPlayList', urlTable);
+        }; //this.playPlayList
       }
   })

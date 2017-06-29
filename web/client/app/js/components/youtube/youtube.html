@@ -1,0 +1,64 @@
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s9">
+        <input placeholder="Search" id="search_field" type="text" class="validate" ng-model="query">
+        <label for="first_name">Search</label>
+      </div>
+      <button class="btn waves-effect waves-light col s3" ng-click='$ctrl.searchYoutube(query)' name="action">Submit
+    <i class="material-icons right">send</i>
+  </button>
+    </div>
+  </form>
+</div>
+
+<div class="row" ng-if="$ctrl.results.length > 0">
+  <div class="col s12 m4" ng-repeat="result in $ctrl.results track by $index" repeat-done="$ctrl.initModals()">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{::result.snippet.thumbnails.default.url}}">
+      </div>
+      <div class="card-content">
+        <span class="card-title activator grey-text text-darken-4">{{::result.snippet.title}}<i class="material-icons right">more_vert</i></span>
+        <p><a href="https://www.youtube.com/watch?v={{::result.id.videoId}}" targer="_blank">VideoLink</a></p>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title grey-text text-darken-4">{{::result.snippet.title}}<i class="material-icons right">close</i></span>
+        <p>{{::result.snippet.description}}</p>
+        <a class="btn-floating btn-large waves-effect waves-light red" data-target='demoModal' modal ng-click="$ctrl.keepSong(result)"><i class="material-icons">add</i></a>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="demoModal" class="modal">
+  <div class="modal-content">
+    <div class="modal-content">
+      <h4>Add a Song to the Playlist</h4>
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="song_title" type="text" class="validate" ng-model="$ctrl.song.title">
+            <label for="song_title">Song Title</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="artist_name" type="text" class="validate" ng-model="$ctrl.song.artist">
+            <label for="artist_name">Artist Name</label>
+          </div>
+        </div>
+        <div class="input-field col s12">
+          <select>
+      <option value="1">Tag #1</option>
+      <option value="2">Tag #1</option>
+      <option value="3">Tag #1</option>
+    </select>
+          <label>Select a Category</label>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-action modal-close waves-effect waves-green btn-flat" ng-click="$ctrl.sendSong($ctrl.song)">Add Song</a>
+    </div>
+  </div>
+</div>

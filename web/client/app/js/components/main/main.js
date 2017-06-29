@@ -7,6 +7,8 @@ angular.module('DukeBox')
     controller: function () {
       'ngInject';
 
-      this.$onInit = () => {};
+      this.$onInit = () => {
+        console.log('hello');
+      };
     }
   });

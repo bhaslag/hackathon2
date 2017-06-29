@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Tag
+ * Category
  *
- * @ORM\Table(name="tag")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\TagRepository")
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  */
-class Tag
+class Category
 {
     /**
      * @var int
@@ -29,9 +29,9 @@ class Tag
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Song", inversedBy="tags")
+     * @ORM\ManyToMany(targetEntity="Playlist", inversedBy="categories")
      */
-    private $songs;
+    private $playlists;
 
     /**
      * Get id
@@ -48,7 +48,7 @@ class Tag
      *
      * @param string $name
      *
-     * @return Tag
+     * @return Category
      */
     public function setName($name)
     {
@@ -71,41 +71,7 @@ class Tag
      */
     public function __construct()
     {
-        $this->songs = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add song
-     *
-     * @param \AppBundle\Entity\Song $song
-     *
-     * @return Tag
-     */
-    public function addSong(\AppBundle\Entity\Song $song)
-    {
-        $this->songs[] = $song;
-
-        return $this;
-    }
-
-    /**
-     * Remove song
-     *
-     * @param \AppBundle\Entity\Song $song
-     */
-    public function removeSong(\AppBundle\Entity\Song $song)
-    {
-        $this->songs->removeElement($song);
-    }
-
-    /**
-     * Get songs
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getSongs()
-    {
-        return $this->songs;
+        $this->playlists = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -113,7 +79,7 @@ class Tag
      *
      * @param \AppBundle\Entity\Playlist $playlist
      *
-     * @return Tag
+     * @return Category
      */
     public function addPlaylist(\AppBundle\Entity\Playlist $playlist)
     {
