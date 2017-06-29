@@ -1,7 +1,7 @@
-<<<<<<< HEAD
 .home {
     background-image: none;
-=======
+}
+
 p {
     width: 180px
 }
@@ -13,7 +13,7 @@ p {
     border: 2px solid lightskyblue;
 }
 
-navbar {
+.navbar {
     position: fixed;
     bottom: 0;
     right: 0;
@@ -33,5 +33,4 @@ navbar {
     color: #ee6e73;
     font-weight: 300;
     font-size: 2em !important;
->>>>>>> 1353327f23ae6e6e35ee4b4522a08fc256dca21d
 }
