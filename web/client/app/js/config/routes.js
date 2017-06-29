@@ -17,29 +17,7 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService, TagsSer
       tags : function (TagsService) {
         return TagsService.query();
       }
-    }
-  }, {
-    name: "sidebar",
-    url: "/sidebar",
-    component: "sidebar"
-  }, {
-    name: "login",
-    url: "",
-    component: "login",
-    abstract: true
-  }, {
-    name: "login.signup",
-    url: "/signup",
-    component: "signup",
-    publicRoute: false
-
-  }, {
-    name: "login.signin",
-    url: "/signin",
-    component: "signin",
-    publicRoute: false
-
-    },
+    }},
     {
       name: "youtube",
       url: "/search",
