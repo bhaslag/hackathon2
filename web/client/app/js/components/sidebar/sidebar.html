@@ -1,16 +1,9 @@
 <ul id="slide-out" class="side-nav">
   <li>
     <div class="user-view">
-      <div class="background">
-        <img src="./app/images/back.jpg">
-      </div>
-      <img class="circle" ng-src="{{$ctrl.currentUser.avatar}}">
-      <span class="white-text name">{{$ctrl.currentUser.fullName}}</span>
+      <span>Your current playlist</span>
     </div>
   </li>
-
-  <user-play-list play-lists="$ctrl.currentUser.playLists"></user-play-list>
-
   <!--<div class="video-container">
     <iframe width="853" height="480" ng-src="{{$ctrl.songUrl}}" frameborder="0" allowfullscreen></iframe>
   </div>-->
@@ -27,6 +20,12 @@
     modestbranding="true">
     </ng-youtube-embed>-->
   </div>
+
+
+  <ul class="collection">
+    <li class="collection-item"  ng-repeat="song in $ctrl.songsList" ng-click="$ctrl.playNow(song)">{{song.artist}} - {{song.title}}</li>
+  </ul>
+
 
   <a class="waves-effect waves-light btn" href="#modal1">Save</a>
   <a class="waves-effect waves-light btn deep-orange accent-3">Clear</a>
