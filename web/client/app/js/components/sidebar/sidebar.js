@@ -5,26 +5,26 @@ angular.module('DukeBox')
   .component('sidebar', {
     templateUrl: './app/js/components/sidebar/sidebar.html',
 
-    controller: function ($scope, $rootScope) {
+    controller: function ($scope, $rootScope, PlayListsService) {
       'ngInject';
 
       this.$onInit = () => {
         console.log('salut');
-         this.urlList = [];
-         this.songsList = [];
+        this.urlList = [];
+        this.songsList = [];
 
         $(".button-collapse").sideNav();
         // Initialize collapsible (uncomment the line below if you use the dropdown variation)
 
         // $('.collapsible').collapsible();
-              
+
         $('.modal').modal();
         $('.trigger-modal').modal();
 
       };
 
       this.close = () => {
-         $('#modal1').modal('close');
+        $('#modal1').modal('close');
       }
 
       this.$onChanges = () => {
@@ -73,5 +73,20 @@ angular.module('DukeBox')
         $rootScope.$emit('playSong', obj.id.videoId);
       }
 
+      this.savePlaylist = (obj) => {
+        console.log({
+          name: obj.name,
+          username: obj.username,
+          songs: this.songsList,
+          tags: obj.tag
+        });
+        PlayListsService.save({
+          name: obj.name,
+          username: obj.username,
+          songs: this.songsList,
+          tags: obj.tag
+        })
+
+      }
     }
   });
