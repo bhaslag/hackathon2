@@ -16,6 +16,11 @@
   right: 25px;
 }
 
+
+html, body{
+  font-family: 'Roboto', sans-serif;
+
+  
 .collection .collection-item.active {
   background-color: inherit;
   color: black;
@@ -24,5 +29,4 @@
 .songInPlayList:hover{
 cursor: pointer;
 background-color: #f2f2f2;
-
 }
