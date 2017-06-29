@@ -10,7 +10,7 @@ p {
     margin-top: 5px;
     width: 60px;
     border-radius: 50px;
-    border: 2px solid lightskyblue;
+    border : 1px solid grey;
 }
 
 .navbar {
@@ -19,18 +19,58 @@ p {
     right: 0;
 }
 
-.card {
-    margin: 5px;
-}
-
 .all-cards {
-    max-width: 1200px;
+    max-width: 1250px;
     float: right;
-    margin: 40px;
+    margin: 20px;
+    overflow: hidden;
 }
 
 .titles {
-    color: #ee6e73;
     font-weight: 300;
     font-size: 2em !important;
+    color: #ef6b7f;
+    text-shadow: 0.5px 0.5px #ea3853;
+}
+
+.card-title {
+    font-size: 1.5em;
+}
+
+.mytitle {
+    background-color: #ef6b7f;
+    padding: 5px;
+}
+
+.browse {
+    background-color: rgba(255, 255, 255, 0.5)
+}
+
+.collection,
+.collection-item {
+    font-size: 1.1em;
+    padding: 0px !important;
+    margin: 0px !important;
+    background-color: rgba(0,0,0,0) !important;
+}
+
+.collection {
+    border: none;
+}
+
+.row .hoverable {
+    max-width: 380px;
+    min-height: 400px;
+    max-height: 400px;
+    overflow: auto;
+    margin: 10px !important;
+    padding: 0px !important;
+}
+
+.card, .card-content {
+    padding: 5px !important;
+}
+
+.material-icons {
+    cursor: pointer;
 }
