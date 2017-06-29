@@ -30,10 +30,12 @@
                         <i class="material-icons">perm_identity</i> {{playlist.user.username}}
                     </div>
                     <div class="chip"> {{playlist.songs.length}} songs</div>
-                    <a class="btn-floating halfway-fab waves-effect circle red"><i class="material-icons">play_arrow</i></a>
                     <div class="tags"> {{song.tags}}</div>
+                    <a class="waves-effect waves-light btn">Lancer la playlist</a>
                     <div class="card-content" ng-repeat="song in playlist.songs">
-                        {{song.title}}
+                        {{song.artist}} - {{song.title}}
+                        <a class="btn-floating btn-small waves-effect waves-light red"><i class="material-icons">add</i></a>
+                        <i class="material-icons circle red" ng-click="$ctrl.playPlayList(playList.songs)">play_arrow</i>
                     </div>
                 </div>
             </div>
@@ -47,7 +49,7 @@
                 <div class="col m3 card panel hoverable" ng-repeat="tag in $ctrl.tags">
                     <span class="card-title">{{tag.name}}</span>
                     <div class="chip"> {{tag.songs.length}}</div>
-                    <a class="btn-floating halfway-fab waves-effect circle red"><i class="material-icons">play_arrow</i></a>
+                  <a class="waves-effect btn">Lancer la playlist</a>
                     <div class="card-content" ng-repeat="song in tag.songs track by $index">
                         <ul>
                             <li>{{song.title}}</li>
