@@ -15,20 +15,18 @@
 </nav>
 <sidebar></sidebar>
 <div class="row">
-    <div class="col m3">
-        <div class="card panel hoverable" ng-repeat="playlist in $ctrl.playlists" ng-repeat="song in playlist.songs">
-            {{playlist.id}}
-            <span class="card-title">{{playlist.name}}</span>
-            <div class="chip">
-                <img ng-src="{{playlist.submitter.avatar}}" alt="Contact Person"> Jane Doe
-            </div>
-            <div class="chip"> {{playlist.songs.length}}</div>
-            <br>
-            <div class="tags"> {{song.tags}}</div>
-            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
-            <div class="card-content">
-                <p></p>
-            </div>
+    <div class="col m3 card panel hoverable" ng-repeat="playlist in $ctrl.playlists" ng-repeat="song in playlist.songs">
+        {{playlist.id}}
+        <span class="card-title">{{playlist.name}}</span>
+        <div class="chip">
+            <img ng-src="{{playlist.submitter.avatar}}" alt="Contact Person"> {{playlist.user.username}}
+        </div>
+        <div class="chip"> {{playlist.songs.length}}</div>
+        <br>
+        <div class="tags"> {{song.tags}}</div>
+        <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+        <div class="card-content">
+            <p></p>
         </div>
     </div>
 </div>
