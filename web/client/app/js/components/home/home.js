@@ -10,7 +10,7 @@ angular.module('DukeBox')
       songs: '<',
       playlists: '<'
     },
-    controller: function () {
+    controller: function ($log) {
       'ngInject';
 
       this.$onInit = () => {
