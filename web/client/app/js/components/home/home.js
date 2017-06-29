@@ -9,18 +9,11 @@ angular.module('DukeBox')
       songs: '<',
       playlists: '<'
     },
-    controller: function (YoutubeAPI, $log) {
+    controller: function () {
       'ngInject';
 
       this.$onInit = () => {
-        $log.log('ready to fire !');
-      }
-
-      this.searchYoutube = (param) => {
-        YoutubeAPI.getVideos(param).then((data) => {
-          this.results = data.data.items;
-          console.log(this.results);
-        })
+        $log.log('youre at home !');
       }
     }
   })

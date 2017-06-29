@@ -28,7 +28,11 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService, TagsSer
     url: "/signin",
     component: "signin",
     publicRoute: false
-
+  }, {
+    name: "youtube",
+    url: "/search",
+    component: "youtube",
+    publicRoute: true
   }]
 
   states.forEach((state) => {

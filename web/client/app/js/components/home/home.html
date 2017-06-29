@@ -1,49 +1,4 @@
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <a ui-sref="home" class="brand-logo">
-             <img class="logo" src="./app/images/wild.jpg">
-             WildEars
-        </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a ui-sref="home">Parcourir</a></li>
-                <li><a ui-sref="myProfile">Mon Profil</a></li>
-                <li><a href="collapsible.html">Déconnexion</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<div class="row">
-    <form class="col s12">
-        <div class="row">
-            <div class="input-field col s9">
-                <input placeholder="Search" id="search_field" type="text" class="validate" ng-model="query">
-                <label for="first_name">Search</label>
-            </div>
-            <button class="btn waves-effect waves-light col s3" ng-click='$ctrl.searchYoutube(query)' name="action">Submit
-    <i class="material-icons right">send</i>
-  </button>
-        </div>
-    </form>
-</div>
 
-<div class="row" ng-if="$ctrl.results.length > 0">
-    <div class="col s12 m4" ng-repeat="result in $ctrl.results">
-        <div class="card">
-            <div class="card-image">
-                <img src="{{::result.snippet.thumbnails.default.url}}">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">{{::result.snippet.title}}<i class="material-icons right">more_vert</i></span>
-                <p><a href="https://www.youtube.com/watch?v={{::result.id.videoId}}" targer="_blank">VideoLink</a></p>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">{{::result.snippet.title}}<i class="material-icons right">close</i></span>
-                <p>{{::result.snippet.description}}</p>
-            </div>
-        </div>
-    </div>
-</div>
 <!--<div class="row">
     <div class="col m3">
         <div class="card panel hoverable" ng-repeat="playlist in $ctrl.playlists" ng-repeat="song in playlist.songs">
