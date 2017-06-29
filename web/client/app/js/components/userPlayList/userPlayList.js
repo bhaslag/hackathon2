@@ -17,10 +17,20 @@ angular.module('DukeBox')
         $('.collapsible').collapsible();
       };
 
-      
+
       this.playSong = (url) => {
         $rootScope.$emit('playSong', url);
       }; //this.playSong
 
+
+      this.playPlayList = (list) => {
+        let urlTable = [];
+
+        for (let i = 0, len = list.length; i < len; i++) {
+          urlTable.push(list[i].url);
+        } //for
+
+        $rootScope.$emit('playPlayList', urlTable);
+      }; //this.playPlayList
     }
   });

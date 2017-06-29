@@ -6,7 +6,7 @@ angular.module('DukeBox', [
     'ngMessages',
     'ngResource',
     'ngSanitize',
-    'ngYoutubeEmbed'
+    'youtube-embed'
   ])
 
 

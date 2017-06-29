@@ -16,7 +16,16 @@
   </div>-->
 
   <div class="video-container">
-    <ng-youtube-embed class="videoPlayerResponsive" video="$ctrl.songUrl" autoplay="true" color="white" disablekb="true" end="20"></ng-youtube-embed>
+    <youtube-video video-url="$ctrl.songUrl"></youtube-video>
+
+    <!--<ng-youtube-embed class="videoPlayerResponsive" 
+    video="$ctrl.songUrl" 
+    playlist="$ctrl.urlList"
+    autoplay="true" 
+    color="white" 
+    disablekb="true"
+    modestbranding="true">
+    </ng-youtube-embed>-->
   </div>
 
 </ul>

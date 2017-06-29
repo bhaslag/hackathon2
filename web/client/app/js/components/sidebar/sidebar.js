@@ -5,7 +5,7 @@ angular.module('DukeBox')
   .component('sidebar', {
     templateUrl: './app/js/components/sidebar/sidebar.html',
 
-    controller: function (PlayListsService, $rootScope) {
+    controller: function (PlayListsService, $rootScope, $scope) {
       'ngInject';
 
       this.currentUser = {
@@ -18,7 +18,7 @@ angular.module('DukeBox')
       this.$onInit = () => {
         this.playLists = PlayListsService.query();
         this.currentUser.playLists = this.playLists;
-        this.songUrl= "https://www.youtube.com/embed/Q8TXgCzxEnw?rel=0";
+        this.songUrl = "https://www.youtube.com/embed/Q8TXgCzxEnw?rel=0";
         console.log(this.currentUser)
 
         // Initialize collapse button
@@ -29,9 +29,31 @@ angular.module('DukeBox')
       };
 
       this.$onChanges = () => {
+
+        $scope.$on('youtube.player.ready', function ($event, player) {
+          // play it again
+          player.playVideo();
+        });
+
+        $scope.$on('youtube.player.ended', function ($event, player) {
+          // play it again
+          player.playVideo();
+        });
+
         $rootScope.$on('playSong', (evt, url) => {
           this.songUrl = url;
         }); // $rootScope.$on('playSong'
+
+        $rootScope.$on('playPlayList', (evt, list) => {
+          this.urlList = [];
+          for (let i = 0, len = list.length; i < len; i++) {
+            if (i == 0) {
+              this.songUrl = list[i];
+            } else {
+              this.urlList.push(list[i]);
+            }
+          }
+        }); // $rootScope.$on('playPlayList'
 
       }; //this.$onChanges
 
