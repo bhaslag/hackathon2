@@ -3,6 +3,7 @@
 angular.module('DukeBox')
 
   .component('home', {
+<<<<<<< HEAD
       templateUrl: './app/js/components/home/home.html',
       bindings: {
         songs: '<',
@@ -31,5 +32,20 @@ angular.module('DukeBox')
 
           $rootScope.$emit('playPlayList', urlTable);
         }; //this.playPlayList
+=======
+
+    templateUrl: './app/js/components/home/home.html',
+    bindings: {
+      tags: '<',
+      songs: '<',
+      playlists: '<'
+    },
+    controller: function () {
+      'ngInject';
+
+      this.$onInit = () => {
+        $log.log('youre at home !');
+>>>>>>> sacha-dev
       }
+    }
   })
