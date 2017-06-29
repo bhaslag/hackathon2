@@ -14,13 +14,13 @@ angular.module('DukeBox')
 
       this.$onInit = () => {
         $log.log('ready to fire !');
-        console.log(this.songs);
-        console.log(this.playlists);
-        console.log(this.tags);
       }
 
       this.searchYoutube = (param) => {
-        YoutubeAPI.getVideos(param);
+        YoutubeAPI.getVideos(param).then((data) => {
+          this.results = data.data.items;
+          console.log(this.results);
+        })
       }
     }
   })
