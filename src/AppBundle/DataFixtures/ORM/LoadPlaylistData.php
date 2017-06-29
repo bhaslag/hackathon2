@@ -18,6 +18,8 @@ class LoadPlaylistData extends AbstractFixture implements \Doctrine\Common\DataF
         $this->getReference('song1')->setPlaylist($playlist1);
         $this->getReference('song2')->setPlaylist($playlist1);
         $this->getReference('song3')->setPlaylist($playlist1);
+        $playlist1->addCategory($this->getReference('category1'));
+        $this->getReference('category1')->addPlaylist($playlist1);
         $manager->persist($playlist1);
         $manager->flush();
         $this->addReference('playlist1', $playlist1);
@@ -26,12 +28,14 @@ class LoadPlaylistData extends AbstractFixture implements \Doctrine\Common\DataF
         $playlist2->setName('Classic');
         $playlist2->setDatecreated(new \DateTime('01-01-2017'));
         $playlist2->setPrivate(true);
-        $playlist1->addSong($this->getReference('song4'));
-        $playlist1->addSong($this->getReference('song5'));
-        $playlist1->addSong($this->getReference('song6'));
+        $playlist2->addSong($this->getReference('song4'));
+        $playlist2->addSong($this->getReference('song5'));
+        $playlist2->addSong($this->getReference('song6'));
         $this->getReference('song4')->setPlaylist($playlist2);
         $this->getReference('song5')->setPlaylist($playlist2);
         $this->getReference('song6')->setPlaylist($playlist2);
+        $playlist1->addCategory($this->getReference('category2'));
+        $this->getReference('category2')->addPlaylist($playlist2);
         $manager->persist($playlist2);
         $manager->flush();
         $this->addReference('playlist2', $playlist2);
@@ -40,12 +44,14 @@ class LoadPlaylistData extends AbstractFixture implements \Doctrine\Common\DataF
         $playlist3->setName('Rock');
         $playlist3->setDatecreated(new \DateTime('01-01-2017'));
         $playlist3->setPrivate(true);
-        $playlist1->addSong($this->getReference('song7'));
-        $playlist1->addSong($this->getReference('song8'));
-        $playlist1->addSong($this->getReference('song9'));
+        $playlist3->addSong($this->getReference('song7'));
+        $playlist3->addSong($this->getReference('song8'));
+        $playlist3->addSong($this->getReference('song9'));
         $this->getReference('song7')->setPlaylist($playlist3);
         $this->getReference('song8')->setPlaylist($playlist3);
         $this->getReference('song9')->setPlaylist($playlist3);
+        $playlist1->addCategory($this->getReference('category3'));
+        $this->getReference('category3')->addPlaylist($playlist3);
         $manager->persist($playlist3);
         $manager->flush();
         $this->addReference('playlist3', $playlist3);
@@ -53,6 +59,6 @@ class LoadPlaylistData extends AbstractFixture implements \Doctrine\Common\DataF
 
     public function getOrder()
     {
-        return 3;
+        return 4;
     }
 }

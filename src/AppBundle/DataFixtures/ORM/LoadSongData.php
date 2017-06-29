@@ -135,6 +135,6 @@ class LoadSongData extends AbstractFixture implements \Doctrine\Common\DataFixtu
 
     public function getOrder()
     {
-        return 2;
+        return 3;
     }
 }

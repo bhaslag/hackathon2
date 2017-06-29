@@ -7,7 +7,9 @@ use AppBundle\Entity\Playlist;
 use AppBundle\Entity\Song;
 use AppBundle\Entity\Tag;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class PostController extends Controller
 {
@@ -34,20 +36,66 @@ class PostController extends Controller
     }
 
     /**
-     * @Route("/api/createplaylist/", name="api_createplaylist")
+     * @Route("/api/playlists", name="api_createplaylist", methods={"POST"})
      */
     public function createPlaylistAction(Request $request)
     {
-        $post = json_decode('request', $request);
-        $playlist = new Playlist();
+        $datas = json_decode($request->getContent());
+//        var_dump($datas->name);
+//        var_dump($datas->username);
+//        var_dump($datas->tags);
+
+//        foreach ($datas->songs as $song)
+//        {
+//            var_dump($song->id->videoId);
+//        }
+//        var_dump($datas);
         $em = $this->getDoctrine()->getManager();
+//        $dataplaylist = json_decode($request->getContent(), true);
 
-        $name = $post['playlist']['name'];
+//        $id = 7;
+//        $dplaylist = $em->getRepository(Playlist::class)->find($id);
+//        $playlistJson = $this->get('app.serializer')->serializeObject($dplaylist);
+//        $dataplaylist = json_decode($playlistJson, true);
+//var_dump($dataplaylist);
 
-        $playlist->setName($name);
+        $playlist = new Playlist();
+        $playlist
+            ->setName($datas->name)
+            ->setDatecreated(new \DateTime())
+        ;
+
+        foreach ($datas->songs as $song)
+        {
+            $newsong = new Song();
+            $em = $this->getDoctrine()->getManager();
+
+            $newsong->setUrl("https://www.youtube.com/watch?v=".$song->id->videoId)
+                    ->setTitle($song->title)
+                    ->setArtist($song->artist)
+                    ->setPlaylist($playlist)
+                    ->setDatecreated(new \DateTime())
+            ;
+
+//            $tags = $song['tags'];
+//
+//            foreach($tags as $tag)
+//            {
+//                $em = $this->getDoctrine()->getManager();
+//
+//                $tagbdd = $em->getRepository('AppBundle:Tag')->find($tag['id']);
+//                $newsong->addTag($tagbdd);
+//                $tagbdd->addSong($newsong);
+//
+//            }
+
+            $em->persist($newsong);
+        }
 
         $em->persist($playlist);
         $em->flush();
+
+        return new JsonResponse(json_encode('success'));
     }
 
     /**
@@ -62,24 +110,6 @@ class PostController extends Controller
         $badplaylist = $em->getRepository('AppBundle:Playlist')->find($playlist);
 
         $em->remove($badplaylist);
-        $em->flush();
-    }
-
-    /**
-     * @Route("/api/addtoplaylist/", name="api_addtoplaylist")
-     */
-    public function addtoPlaylistAction(Request $request)
-    {
-        $post = json_decode('request', $request);
-        $em = $this->getDoctrine()->getManager();
-
-        $songID = $post['song']['id'];
-        $song = $em->getRepository('AppBundle:Song')->findBy($songID);
-
-        $playlistID = $post['playlist']['id'];
-        $edplaylist = $em->getRepository('AppBundle:Playlist')->findBy($playlistID)->addSong($song);
-
-        $em->persist($edplaylist);
         $em->flush();
     }
 
