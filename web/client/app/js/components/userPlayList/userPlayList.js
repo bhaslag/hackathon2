@@ -13,6 +13,9 @@ angular.module('DukeBox')
       'ngInject';
 
       this.$onInit = () => {
+        // this.playLists = PlayListsService.query();
+        // console.log(this
+        // )
         console.log(this)
         $('.collapsible').collapsible();
       };

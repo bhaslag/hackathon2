@@ -1,39 +1,29 @@
-<html lang="fr" ng-app="demoApp" class="home">
-
-<head>
-    <meta charset="utf-8" />
-</head>
-<div class="navbar-fixed">
-    <nav>
-        <div class="nav-wrapper">
-            <a ui-sref="home" class="brand-logo">
-             <img class="logo" src="./app/images/wild.jpg">
-             WildEars
-        </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a ui-sref="home">Parcourir</a></li>
-                <li><a ui-sref="myProfile">Mon Profil</a></li>
-                <li><a href="collapsible.html">Déconnexion</a></li>
-            </ul>
-        </div>
-    </nav>
-</div>
-<sidebar></sidebar>
 <div class="all-cards">
     <div class="row">
-        <div class="col s12 card">
+        <div class="col s12 card browse">
             <span class="card-title titles">Browse by playlists</span>
             <div class="row">
-                <div class="col m3 card panel hoverable" ng-repeat="playlist in $ctrl.playlists">
-                    <span class="card-title">{{playlist.name}}</span>
-                    <div class="chip" on-click="goToProfile()">
-                        <i class="material-icons">perm_identity</i> {{playlist.user.username}}
+                <div class="col m4 card panel hoverable" ng-repeat="playlist in $ctrl.playlists">
+                    <div class="row mytitle">
+                        <span class="card-title">{{playlist.name}}</span>
+                        <i class="material-icons" ng-click="$ctrl.playPlayList(playlist.songs)">play_circle_filled</i>
                     </div>
-                    <div class="chip"> {{playlist.songs.length}} songs</div>
-                    <a class="btn-floating halfway-fab waves-effect circle red"><i class="material-icons">play_arrow</i></a>
-                    <div class="tags"> {{song.tags}}</div>
-                    <div class="card-content" ng-repeat="song in playlist.songs">
-                        {{song.title}}
+                    <div class="row">
+                        <div class="chip" on-click="goToProfile()">
+                            <i class="material-icons">perm_identity</i> {{playlist.user.username}}
+                        </div>
+                        <div class="chip"> {{playlist.songs.length}} songs</div>
+                    </div>
+                    <div class="card-content">
+                        <ul class="collection" ng-repeat="song in playlist.songs">
+                            <li class="collection-item">{{song.artist}} - {{song.title}}
+                                <i class="material-icons" ng-click="$ctrl.playSong(song.url)">play_circle_outline</i>
+                                <i class="material-icons" ng-click="$ctrl.add(song.url)">playlist_add</i>
+                            </li>
+                            <br/>
+                    </div>
+                    <div class="card-footer">
+                        <div class="tags"> {{song.tags}}</div>
                     </div>
                 </div>
             </div>
@@ -41,24 +31,26 @@
     </div>
 
     <div class="row">
-        <div class="col s12 card">
+        <div class="col s12 card browse">
             <span class="card-title titles">Browse by genres</span>
             <div class="row">
-                <div class="col m3 card panel hoverable" ng-repeat="tag in $ctrl.tags">
+                <div class="col m4 card panel hoverable" ng-repeat="tag in $ctrl.tags">
+                    <div class="row mytitle">
                     <span class="card-title">{{tag.name}}</span>
-                    <div class="chip"> {{tag.songs.length}}</div>
-                    <a class="btn-floating halfway-fab waves-effect circle red"><i class="material-icons">play_arrow</i></a>
+                    <i class="material-icons" ng-click="$ctrl.playPlayList(playlist.songs)">play_circle_filled</i>
+                    <div class="chip"> {{tag.songs.length}} songs</div>
+                    </div>
                     <div class="card-content" ng-repeat="song in tag.songs track by $index">
-                        <ul>
-                            <li>{{song.title}}</li>
+                        <ul class="collection">
+                            <li class="collection-item">{{song.artist}} - {{song.title}}
+                                <i class="material-icons" ng-click="$ctrl.playSong(song.url)">play_circle_outline</i>
+                                <i class="material-icons" ng-click="$ctrl.add(song.url)">playlist_add</i>
+                            </li>
                         </ul>
+                        <br/>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-</body>
-
-</html>

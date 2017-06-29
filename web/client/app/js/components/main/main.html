@@ -1,11 +1,17 @@
-<html lang="fr" ng-app="demoApp">
-
-<head>
-    <meta charset="utf-8" />
-</head>
-
-<body>
-    <ui-view></ui-view>
-</body>
-
-</html>
+<div class="navbar-fixed">
+    <nav>
+        <div class="nav-wrapper">
+            <a ui-sref="home" class="brand-logo">
+             <img class="logo" src="./app/images/wild.jpg">
+             WildEars
+        </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a ui-sref="home">Parcourir</a></li>
+                <li><a ui-sref="youtube">Recherche</a></li>
+                <li><a href="collapsible.html">Déconnexion</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<sidebar></sidebar>
+<ui-view></ui-view>
