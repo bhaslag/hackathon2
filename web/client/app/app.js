@@ -12,7 +12,7 @@ angular.module('DukeBox', [
 
   .constant('CONSTANTS', {
     authEvent: 'AUTH',
-    authUrl: '/api/login_check',
+    authUrl: 'http://localhost:8000/log',
     usersUrl: '/api/users',
     authToken: 'duke-token',
   });
