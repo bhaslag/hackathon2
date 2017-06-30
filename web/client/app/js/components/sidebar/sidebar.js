@@ -96,11 +96,17 @@ angular.module('DukeBox')
           songs: this.songsList
         });
         PlaylistsService.save({
-          name: obj.name,
-          username: obj.username,
-          tags: obj.tag,
-          songs: this.songsList
-        });
+            name: obj.name,
+            username: obj.username,
+            tags: obj.tag,
+            songs: this.songsList
+          }).then(() => {
+            Materialize.toast('Finally someone with good taste around here ;)', 7000)
+            $('#modal1').modal('close');
+          })
+          .catch((err) => {
+            reject(err);
+          });
       }
     }
   });

@@ -1,7 +1,12 @@
 <ul id="slide-out" class="side-nav">
   <li>
     <div class="user-view">
+      <div class="row">
+      </div class="col s12">
+      <i class="small material-icons">video_library</i>
       <span>Your current playlist</span>
+      </div>
+      </div>
     </div>
   </li>
   <!--<div class="video-container">
@@ -27,8 +32,8 @@
   </ul>
 
 
-  <a class="waves-effect waves-light btn" href="#modal1">Save</a>
-  <a class="waves-effect waves-light btn deep-orange accent-3" ng-click="$ctrl.clearList()">Clear</a>
+  <a class="waves-effect waves-light btn light-blue lighten-4" href="#modal1">Save</a>
+  <a class="waves-effect waves-light btn  red lighten-3" ng-click="$ctrl.clearList()">Clear</a>
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
@@ -56,11 +61,11 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a class="waves-effect waves-light btn" href="#modal1" ng-click="$ctrl.savePlaylist(playlist)">Save</a>
-      <a class="waves-effect waves-light btn deep-orange accent-3" ng-click="$ctrl.close()">Go back</a>
+      <a class="waves-effect waves-light btn light-blue lighten-4" href="#modal1" ng-click="$ctrl.savePlaylist(playlist)" onclick="Materialize.toast('Finally someone with good taste around here ;)', 7000)">Save</a>
+      <a class="waves-effect waves-light btn red lighten-3" ng-click="$ctrl.close()">Go back</a>
     </div>
   </div>
 
 </ul>
 
-<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+<a href="#" data-activates="slide-out" class="button-collapse"><i class="small material-icons">video_library</i></a>

@@ -23,3 +23,17 @@
 .input-field > input {
     padding-top: 10px !important;
 }
+
+span {
+    margin-bottom: -10px;
+    font-size: 1.3em;
+}
+
+.button-collapse {
+    margin: 20px;
+    position: fixed;
+}
+
+li {
+    cursor: pointer;
+}

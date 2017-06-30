@@ -3,3 +3,17 @@ span {
   line-height: 1em;
   overflow: hidden;
 }
+
+.search {
+  margin-top: 100px;
+  width: 1300px;
+}
+
+h3 {
+  font-size: 30px !important;
+  letter-spacing: 3px !important;
+  color: white !important;
+  text-align: center !important;
+  margin-bottom: 100px;
+  text-shadow: 2px 0px black;
+}
