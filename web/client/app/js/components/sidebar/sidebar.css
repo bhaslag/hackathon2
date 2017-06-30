@@ -16,10 +16,6 @@
     background-color: rgba(255,255,255,0.95);
 }
 
-ul {
-    z-index: 1000 !important;
-}
-
 .input-field {
     margin-bottom: 20px;
 }

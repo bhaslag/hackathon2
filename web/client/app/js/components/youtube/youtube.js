@@ -12,7 +12,7 @@ angular.module('DukeBox')
         $log.log('ready to fire !');
         // console.log($scope);
         // console.log($scope);
-        console.log($scope.$parent.$$nextSibling.$ctrl);
+        // console.log($scope.$parent.$$nextSibling.$ctrl);
       }
 
       this.sendSong = (obj) => {

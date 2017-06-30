@@ -5,7 +5,11 @@ angular.module('DukeBox')
   .component('sidebar', {
     templateUrl: './app/js/components/sidebar/sidebar.html',
 
+<<<<<<< HEAD
     controller: function ($scope, $rootScope, PlayListsService) {
+=======
+    controller: function ($scope, $rootScope, PlaylistsService) {
+>>>>>>> f44bf50a5c01bee3f4a509eef1fd5e069cc9144d
       'ngInject';
 
       this.$onInit = () => {
@@ -73,20 +77,24 @@ angular.module('DukeBox')
         $rootScope.$emit('playSong', obj.id.videoId);
       }
 
+      this.clearList = (player) => {
+        this.songsList = [];
+        this.urlList = [];
+      }
+
       this.savePlaylist = (obj) => {
         console.log({
           name: obj.name,
-          username: obj.username,
-          songs: this.songsList,
-          tags: obj.tag
+          usernme: obj.username,
+          tags: obj.tag,
+          songs: this.songsList
         });
-        PlayListsService.save({
+        PlaylistsService.save({
           name: obj.name,
           username: obj.username,
-          songs: this.songsList,
-          tags: obj.tag
-        })
-
+          tags: obj.tag,
+          songs: this.songsList
+        });
       }
     }
   });
