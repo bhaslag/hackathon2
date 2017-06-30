@@ -23,8 +23,9 @@ p {
 .titles {
     font-weight: 300;
     font-size: 2em !important;
-    color: #B1D28D;
-    text-shadow: 0.5px 0.5px #768242;
+    color: white;
+    text-shadow : 1px 0px beige;
+    letter-spacing: 2px;
 }
 
 .card-title {
@@ -32,7 +33,7 @@ p {
 }
 
 .mytitle {
-    background-color: #B1D28D;
+    background-color:rgba(179, 229, 252, 0.7);
     padding: 5px;
 }
 

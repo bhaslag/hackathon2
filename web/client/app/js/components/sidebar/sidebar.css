@@ -33,3 +33,7 @@ span {
     margin: 20px;
     position: fixed;
 }
+
+li {
+    cursor: pointer;
+}

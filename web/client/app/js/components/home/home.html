@@ -3,14 +3,14 @@
         <div class="col s12 card browse">
             <span class="card-title titles">Browse by playlists</span>
             <div class="row">
-                <div class="col m4 card panel hoverable" ng-repeat="playlist in $ctrl.playlists">
+                <div class="col m4 card panel hoverable" ng-repeat="playlist in $ctrl.playlists | orderBy:'dateCreated':true">
                     <div class="row mytitle">
                         <span class="card-title">{{playlist.name}}</span>
                         <i class="material-icons" ng-click="$ctrl.playPlayList(playlist.songs)">play_circle_filled</i>
                     </div>
                     <div class="row">
                         <div class="chip" on-click="goToProfile()">
-                            <i class="material-icons">perm_identity</i> {{playlist.user.username}}
+                            <i class="material-icons">perm_identity</i> {{playlist.username}}
                         </div>
                         <div class="chip"> {{playlist.songs.length}} songs</div>
                     </div>
@@ -34,7 +34,7 @@
         <div class="col s12 card browse">
             <span class="card-title titles">Browse by genres</span>
             <div class="row">
-                <div class="col m4 card panel hoverable" ng-repeat="tag in $ctrl.tags">
+                <div class="col m4 card panel hoverable" ng-repeat="tag in $ctrl.tags | orderBy:'dateCreated':true">
                     <div class="row mytitle">
                     <span class="card-title">{{tag.name}}</span>
                     <i class="material-icons" ng-click="$ctrl.playPlayList(playlist.songs)">play_circle_filled</i>
