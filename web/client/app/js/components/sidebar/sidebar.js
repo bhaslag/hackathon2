@@ -5,11 +5,7 @@ angular.module('DukeBox')
   .component('sidebar', {
     templateUrl: './app/js/components/sidebar/sidebar.html',
 
-<<<<<<< HEAD
-    controller: function ($scope, $rootScope, PlayListsService) {
-=======
     controller: function ($scope, $rootScope, PlaylistsService) {
->>>>>>> f44bf50a5c01bee3f4a509eef1fd5e069cc9144d
       'ngInject';
 
       this.$onInit = () => {
@@ -18,10 +14,6 @@ angular.module('DukeBox')
         this.songsList = [];
 
         $(".button-collapse").sideNav();
-        // Initialize collapsible (uncomment the line below if you use the dropdown variation)
-
-        // $('.collapsible').collapsible();
-
         $('.modal').modal();
         $('.trigger-modal').modal();
 
@@ -39,53 +31,67 @@ angular.module('DukeBox')
         });
 
         $scope.$on('youtube.player.ended', ($event, player) => {
-          console.log(this.urlList)
-          if (this.urlList.length > 0) {
+          if (this.songsList.length > 0) {
             this.songUrl = this.urlList[0];
             this.urlList.splice(0, 1);
             player.playVideo();
           }
         });
 
-        $rootScope.$on('playSong', (evt, url) => {
-          this.songUrl = url;
-          console.log(this.songUrl)
+        $rootScope.$on('addSongFromYT', (evt, obj) => {
+          // console.log(obj);
+          // this.songsList.push
+        });
+
+        $rootScope.$on('playSongFromYT', (evt, obj) => {
+          console.log(obj);
+        });
+
+        $rootScope.$on('addSong', (evt, obj) => {
+          console.log(obj);
+          this.songsList.push(obj);
+        });
+
+        $rootScope.$on('playSong', (evt, obj) => {
+          console.log(obj);
+          this.songUrl = obj.url;
         }); // $rootScope.$on('playSong'
 
-        $rootScope.$on('playPlayList', (evt, list) => {
+        $rootScope.$on('addPlaylist', (evt, list) => {
+          console.log(list);
           for (let i = 0, len = list.length; i < len; i++) {
-            if (i == 0) {
-              this.songUrl = list[i];
-            } else {
-              this.urlList.push(list[i]);
-            }
+            this.songsList.push(list[i]);
           }
-          console.log(this.urlList)
+        })
+
+        $rootScope.$on('playPlaylist', (evt, list) => {
+          console.log(list);
+          this.songUrl = list[0].url;
+          for (let i = 0, len = list.length; i < len; i++) {
+            this.urlList.push(list[i].url);
+            this.songsList.push(list[i])
+          }
         }); // $rootScope.$on('playPlayList'
 
       }; //this.$onChanges
 
-      this.catchSong = (obj) => {
-        this.song = obj;
-        console.log(this.song);
-        this.songUrl = "https://www.youtube.com/watch?v=" + this.song.id.videoId;
-        this.urlList.push(this.songUrl);
-        this.songsList.push(this.song);
-      }
+
+      // this.songUrl = "https://www.youtube.com/watch?v=" + this.song.id.videoId;
 
       this.playNow = (obj) => {
-        $rootScope.$emit('playSong', obj.id.videoId);
-      }
+        $rootScope.$emit('playSong', obj);
+      };
 
       this.clearList = (player) => {
         this.songsList = [];
         this.urlList = [];
+        player.stopvideo();
       }
 
       this.savePlaylist = (obj) => {
         console.log({
           name: obj.name,
-          usernme: obj.username,
+          username: obj.username,
           tags: obj.tag,
           songs: this.songsList
         });
