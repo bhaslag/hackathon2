@@ -63,6 +63,7 @@ class PostController extends Controller
         $playlist
             ->setName($datas->name)
             ->setDatecreated(new \DateTime())
+            ->setUsername($datas->username)
         ;
 
         foreach ($datas->songs as $song)

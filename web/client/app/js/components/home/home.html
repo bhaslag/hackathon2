@@ -1,9 +1,13 @@
 <div class="all-cards">
+    <div class="input-field col s12">
+        <input id="filter" type="text" class="validate" ng-model="filter">
+        <label for="filter">Filter</label>
+    </div>
     <div class="row">
         <div class="col s12 card browse">
             <span class="card-title titles">Browse by playlists</span>
             <div class="row">
-                <div class="col m4 card panel hoverable" ng-repeat="playlist in $ctrl.playlists | orderBy:'dateCreated':true">
+                <div class="col m4 card panel hoverable" ng-repeat="playlist in $ctrl.playlists | orderBy:'dateCreated':true | filter:filter">
                     <div class="row mytitle">
                         <span class="card-title">{{playlist.name}}</span>
                         <i class="material-icons" ng-click="$ctrl.playPlaylist(playlist.songs)">play_circle_filled</i>

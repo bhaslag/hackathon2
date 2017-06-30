@@ -9,14 +9,13 @@ angular.module('DukeBox')
       'ngInject';
 
       this.$onInit = () => {
-        console.log('salut');
         this.urlList = [];
         this.songsList = [];
+        this.index = 1;
 
         $(".button-collapse").sideNav();
         $('.modal').modal();
         $('.trigger-modal').modal();
-
       };
 
       this.close = () => {
@@ -32,19 +31,10 @@ angular.module('DukeBox')
 
         $scope.$on('youtube.player.ended', ($event, player) => {
           if (this.songsList.length > 0) {
-            this.songUrl = this.urlList[0];
-            this.urlList.splice(0, 1);
+            this.songUrl = this.songsList[this.index].url;
+            this.index == this.songsList.length - 1 ? this.index = 0 : this.index++;
             player.playVideo();
           }
-        });
-
-        $rootScope.$on('addSongFromYT', (evt, obj) => {
-          // console.log(obj);
-          // this.songsList.push
-        });
-
-        $rootScope.$on('playSongFromYT', (evt, obj) => {
-          console.log(obj);
         });
 
         $rootScope.$on('addSong', (evt, obj) => {
@@ -55,6 +45,9 @@ angular.module('DukeBox')
         $rootScope.$on('playSong', (evt, obj) => {
           console.log(obj);
           this.songUrl = obj.url;
+          if (this.songsList.indexOf(obj) >= 0) {
+            this.index = this.songsList.indexOf(obj) + 1;
+          }
         }); // $rootScope.$on('playSong'
 
         $rootScope.$on('addPlaylist', (evt, list) => {
@@ -66,27 +59,23 @@ angular.module('DukeBox')
 
         $rootScope.$on('playPlaylist', (evt, list) => {
           console.log(list);
+          this.clearList();
+          this.index = 1;
           this.songUrl = list[0].url;
           for (let i = 0, len = list.length; i < len; i++) {
-            this.urlList.push(list[i].url);
             this.songsList.push(list[i])
           }
         }); // $rootScope.$on('playPlayList'
 
       }; //this.$onChanges
 
-
-      // this.songUrl = "https://www.youtube.com/watch?v=" + this.song.id.videoId;
-
       this.playNow = (obj) => {
         $rootScope.$emit('playSong', obj);
       };
 
-      this.clearList = (player) => {
+      this.clearList = () => {
         this.songsList = [];
-        this.urlList = [];
-        player.stopvideo();
-      }
+      };
 
       this.savePlaylist = (obj) => {
         console.log({
@@ -96,17 +85,18 @@ angular.module('DukeBox')
           songs: this.songsList
         });
         PlaylistsService.save({
-            name: obj.name,
-            username: obj.username,
-            tags: obj.tag,
-            songs: this.songsList
-          }).then(() => {
+          name: obj.name,
+          username: obj.username,
+          tags: obj.tag,
+          songs: this.songsList
+        }, (err) => {
+          if (err) {
+            reject(err)
+          } else {
             Materialize.toast('Finally someone with good taste around here ;)', 7000)
-            $('#modal1').modal('close');
-          })
-          .catch((err) => {
-            reject(err);
-          });
+            $('.modal').modal('close');
+          }
+        });
       }
     }
   });

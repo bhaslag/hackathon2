@@ -31,6 +31,13 @@ class Playlist
     /**
      * @var string
      *
+     * @ORM\Column(name="username", type="string", length=255, nullable=true)
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="nom", type="string", length=255, nullable=true)
      */
     private $nom;
@@ -264,6 +271,30 @@ class Playlist
     public function getPrenom()
     {
         return $this->prenom;
+    }
+
+    /**
+     * Set username
+     *
+     * @param string $username
+     *
+     * @return Playlist
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
+    /**
+     * Get username
+     *
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
     }
 
     /**
