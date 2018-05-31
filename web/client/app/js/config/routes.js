@@ -30,7 +30,7 @@ let Config = function ($stateProvider, $urlRouterProvider, SongsService, TagsSer
     $stateProvider.state(state)
   })
 
-  $urlRouterProvider.otherwise('/main')
+  $urlRouterProvider.otherwise('/')
 }
 
 const config = [

@@ -12,17 +12,23 @@ angular.module('DukeBox')
         $log.log('ready to fire !');
         // console.log($scope);
         // console.log($scope);
-        console.log($scope.$parent.$$nextSibling.$ctrl);
+        // console.log($scope.$parent.$$nextSibling.$ctrl);
       }
 
-      this.sendSong = (obj) => {
-        $scope.$parent.$$nextSibling.$ctrl.catchSong(obj);
+      this.addSong = (obj) => {
+        obj.url = obj.id.videoId;
+        $rootScope.$emit('addSong', obj);
+      }
+
+      this.playSong = (obj) => {
+        obj.url = obj.id.videoId;
+        $rootScope.$emit('playSong', obj);
       }
 
       this.searchYoutube = (param) => {
+        this.results = [];
         YoutubeAPI.getVideos(param).then((data) => {
           this.results = data.data.items;
-          console.log(this.results);
         })
       }
 
@@ -36,6 +42,10 @@ angular.module('DukeBox')
       this.keepSong = (obj) => {
         this.song = obj;
         console.log(this.song);
+      }
+
+      this.closeModal = () => {
+        $('.modal').modal('close');
       }
     }
   })

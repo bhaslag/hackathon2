@@ -1,24 +1,29 @@
 <div class="all-cards">
+    <div class="input-field col s12">
+        <input id="filter" type="text" class="validate" ng-model="filter">
+        <label for="filter">Filter</label>
+    </div>
     <div class="row">
         <div class="col s12 card browse">
             <span class="card-title titles">Browse by playlists</span>
             <div class="row">
-                <div class="col m4 card panel hoverable" ng-repeat="playlist in $ctrl.playlists">
+                <div class="col m4 card panel hoverable" ng-repeat="playlist in $ctrl.playlists | orderBy:'dateCreated':true | filter:filter">
                     <div class="row mytitle">
                         <span class="card-title">{{playlist.name}}</span>
-                        <i class="material-icons" ng-click="$ctrl.playPlayList(playlist.songs)">play_circle_filled</i>
+                        <i class="material-icons" ng-click="$ctrl.playPlaylist(playlist.songs)">play_circle_filled</i>
+                        <i class="material-icons" ng-click="$ctrl.addPlaylist(playlist.songs)">playlist_add</i>
                     </div>
                     <div class="row">
                         <div class="chip" on-click="goToProfile()">
-                            <i class="material-icons">perm_identity</i> {{playlist.user.username}}
+                            <i class="material-icons">perm_identity</i> {{playlist.username}}
                         </div>
                         <div class="chip"> {{playlist.songs.length}} songs</div>
                     </div>
                     <div class="card-content">
                         <ul class="collection" ng-repeat="song in playlist.songs">
                             <li class="collection-item">{{song.artist}} - {{song.title}}
-                                <i class="material-icons" ng-click="$ctrl.playSong(song.url)">play_circle_outline</i>
-                                <i class="material-icons" ng-click="$ctrl.add(song.url)">playlist_add</i>
+                                <i class="material-icons" ng-click="$ctrl.playSong(song)">play_circle_outline</i>
+                                <i class="material-icons" ng-click="$ctrl.addSong(song)">playlist_add</i>
                             </li>
                             <br/>
                     </div>
@@ -34,11 +39,11 @@
         <div class="col s12 card browse">
             <span class="card-title titles">Browse by genres</span>
             <div class="row">
-                <div class="col m4 card panel hoverable" ng-repeat="tag in $ctrl.tags">
+                <div class="col m4 card panel hoverable" ng-repeat="tag in $ctrl.tags | orderBy:'dateCreated':true">
                     <div class="row mytitle">
-                    <span class="card-title">{{tag.name}}</span>
-                    <i class="material-icons" ng-click="$ctrl.playPlayList(playlist.songs)">play_circle_filled</i>
-                    <div class="chip"> {{tag.songs.length}} songs</div>
+                        <span class="card-title">{{tag.name}}</span>
+                        <i class="material-icons" ng-click="$ctrl.playPlayList(playlist.songs)">play_circle_filled</i>
+                        <div class="chip"> {{tag.songs.length}} songs</div>
                     </div>
                     <div class="card-content" ng-repeat="song in tag.songs track by $index">
                         <ul class="collection">
@@ -46,7 +51,7 @@
                                 <i class="material-icons" ng-click="$ctrl.playSong(song.url)">play_circle_outline</i>
                                 <i class="material-icons" ng-click="$ctrl.add(song.url)">playlist_add</i>
                             </li>
-                              <br/>
+                            <br/>
                         </ul>
                     </div>
                 </div>

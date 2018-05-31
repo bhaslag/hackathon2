@@ -4,3 +4,16 @@ html {
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+
+.nav {
+    background-color: #ABB460 !important;
+    position: fixed;
+    height: 80px !important;
+
+}
+
+.logo-text {
+    font-family: 'Rajdhani', sans-serif;
+    letter-spacing: 2px;
+    font-size: 1.4em;
+}

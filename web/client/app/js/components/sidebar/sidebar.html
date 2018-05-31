@@ -1,23 +1,17 @@
 <ul id="slide-out" class="side-nav">
   <li>
     <div class="user-view">
-      <div class="background">
-        <img src="./app/images/back.jpg">
-      </div>
-      <img class="circle" ng-src="{{$ctrl.currentUser.avatar}}">
-      <span class="white-text name">{{$ctrl.currentUser.fullName}}</span>
+      <div class="row">
+      </div class="col s12">
+      <i class="small material-icons">video_library</i>
+      <span>Your current playlist</span>
+    </div>
+    </div>
     </div>
   </li>
 
-  <user-play-list play-lists="$ctrl.currentUser.playLists"></user-play-list>
-
-  <!--<div class="video-container">
-    <iframe width="853" height="480" ng-src="{{$ctrl.songUrl}}" frameborder="0" allowfullscreen></iframe>
-  </div>-->
-
   <div class="video-container">
     <youtube-video video-url="$ctrl.songUrl"></youtube-video>
-
     <!--<ng-youtube-embed class="videoPlayerResponsive" 
     video="$ctrl.songUrl" 
     playlist="$ctrl.urlList"
@@ -28,8 +22,12 @@
     </ng-youtube-embed>-->
   </div>
 
-  <a class="waves-effect waves-light btn" href="#modal1">Save</a>
-  <a class="waves-effect waves-light btn deep-orange accent-3">Clear</a>
+  <ul class="collection">
+    <li class="collection-item" ng-repeat="song in $ctrl.songsList track by $index" ng-click="$ctrl.playNow(song)">{{song.artist}} - {{song.title}}</li>
+  </ul>
+
+  <a class="waves-effect waves-light btn light-blue lighten-4" href="#modal1">Save</a>
+  <a class="waves-effect waves-light btn  red lighten-3" ng-click="$ctrl.clearList()">Clear</a>
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
@@ -39,29 +37,29 @@
           <div class="row">
             <div class="input-field col s12">
               <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate">
+              <input id="icon_prefix" type="text" class="validate" ng-model="playlist.username">
               <label for="icon_prefix">Your Name</label>
             </div>
             <div class="input-field col s12">
               <i class="material-icons prefix">album</i>
-              <input id="icon_prefix" type="tel" class="validate">
+              <input id="icon_prefix" type="tel" class="validate" ng-model="playlist.name">
               <label for="icon_prefix">Choose a name for your playlist</label>
             </div>
             <div class="input-field col s12">
               <i class="material-icons prefix">loyalty</i>
-              <input id="icon_prefix" type="tel" class="validate">
-              <label for="icon_prefix">Add tags</label>
+              <input id="icon_prefix" type="tel" class="validate" ng-model="playlist.tag">
+              <label for="icon_prefix">Add a tag</label>
             </div>
           </div>
         </form>
       </div>
     </div>
     <div class="modal-footer">
-      <a class="waves-effect waves-light btn" href="#modal1">Save</a>
-      <a class="waves-effect waves-light btn deep-orange accent-3" ng-click="$ctrl.close()">Go back</a>
+      <a class="waves-effect waves-light btn light-blue lighten-4" href="#modal1" ng-click="$ctrl.savePlaylist(playlist)" onclick="Materialize.toast('Finally someone with good taste around here ;)', 7000)">Save</a>
+      <a class="waves-effect waves-light btn red lighten-3" ng-click="$ctrl.close()">Go back</a>
     </div>
   </div>
 
 </ul>
 
-<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+<a href="#" data-activates="slide-out" class="button-collapse"><i class="small material-icons">video_library</i></a>

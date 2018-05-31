@@ -10,14 +10,8 @@ p {
     margin-top: 5px;
     width: 60px;
     border-radius: 50px;
-    border : 1px solid grey;
 }
 
-.navbar {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-}
 
 .all-cards {
     max-width: 1250px;
@@ -29,8 +23,9 @@ p {
 .titles {
     font-weight: 300;
     font-size: 2em !important;
-    color: #ef6b7f;
-    text-shadow: 0.5px 0.5px #ea3853;
+    color: white;
+    text-shadow : 1px 0px beige;
+    letter-spacing: 2px;
 }
 
 .card-title {
@@ -38,7 +33,7 @@ p {
 }
 
 .mytitle {
-    background-color: #ef6b7f;
+    background-color:rgba(179, 229, 252, 0.7);
     padding: 5px;
 }
 

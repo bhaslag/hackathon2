@@ -51,6 +51,7 @@ class Song
 
     /**
      * @ORM\ManyToOne(targetEntity="Playlist", inversedBy="songs")
+     * @ORM\JoinColumn(name="playlist_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $playlist;
 
